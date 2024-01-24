@@ -54,10 +54,12 @@ export const DeleteDialog = ({
         const folder = urlParts.pop();
         const s3Item = folder + '/' + imageName
         console.log('meme: ' + s3Item);
-        s3Delete(s3Item);
+        const deleteResponse = await fetch('/api/aws/', 
+                                        { method:'DELETE', 
+                                        body: JSON.stringify({ imageName: s3Item }) 
+                                        });
 
         await axios({
-            withCredentials: true,
             method: "delete",
             data: {
               id: id  

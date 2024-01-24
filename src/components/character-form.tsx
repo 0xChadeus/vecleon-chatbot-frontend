@@ -126,15 +126,21 @@ export const CharacterForm = ({
                 })    
                 return
             }
-            const imageUploadUrl = generateUploadUrl('images/' + imageName + ".png");
-            await fetch(imageUploadUrl,{
+            const imageUploadUrl = await fetch('/api/aws/', {
+                method: 'POST',
+                body: JSON.stringify({
+                    imageName: 'images/' + imageName + '.png',
+                })
+            }).then(res => res.json());
+
+            await fetch(imageUploadUrl.url,{
                 method:'PUT',
                 headers: {
                     "Content-Type": "image/png"
                 },
                 body: imgFile,
             });
-            const finalImageUrl = imageUploadUrl.split('?')[0];
+            const finalImageUrl = imageUploadUrl.url.split('?')[0];
             characterForm.setValue("src", finalImageUrl);    
         }
         try {

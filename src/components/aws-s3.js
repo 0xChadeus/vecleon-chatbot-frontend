@@ -2,8 +2,8 @@ import aws from 'aws-sdk'
 
 const region = "ap-southeast-2"
 const bucketName = "mychatbucket123"
-const accessKeyId = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID
-const secretAccessKey = process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY
+const accessKeyId = process.env.AWS_ACCESS_KEY_ID
+const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
 
 const s3 = new aws.S3({
     region,
