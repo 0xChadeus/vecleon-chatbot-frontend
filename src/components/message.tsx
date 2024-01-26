@@ -41,14 +41,14 @@ export const Message = ({
         role === "ai" && "bg-black text-white")}>
         <div className='flex flex-col border border-white rounded-xl py-8 px-12'>
           <div className='flex flex-row'>
-            {images?.map((image) => (
+            {images?.map((image, index) => (
               image?
-              <div className='w-80 py-3 px-3'>
+              <div className='w-80 py-3 px-3' key={index}>
                 <img className="mx-4 rounded-2xl bg-white"
                   src={image}
                 />
               </div>:
-              <div/>
+              <div key={index}/>
             ))}
           </div>
             {audio? <audio controls src={audio}/> : <div/>}
