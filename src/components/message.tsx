@@ -11,6 +11,7 @@ export interface MessageProps {
   src?: string;
   images?: string[];
   audio?: string;
+  mes_id?: string;
 }
 
 export const Message = ({

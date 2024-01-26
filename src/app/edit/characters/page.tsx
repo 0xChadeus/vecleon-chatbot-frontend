@@ -42,6 +42,7 @@ const CharacterListPage = ({}) => {
           <div className="absolute top-20 right-0">
             {characters.map((character) => (
               <ListItem
+                key={character.id}
                 role="character"
                 id={character.id}
                 name={character.name}

@@ -72,17 +72,17 @@ export const Chat = (
         method: 'put',
         url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_chat/`,
         data: {
-          id: params.chatId
+          chat_id: params.chatId
         },
         headers: {"X-CSRFToken": csrftoken},
       }).then((response: any) => {
-            const msgHistory = response.data.msg_history.map((message: any) => {
-            
+          const msgHistory = response.data.msg_history.map((message: any) => {
             const mes: MessageProps = {
               role: message[0],
               content: message[1],
               images: message[2].replace(/[\[\]']+/g, '').split(','),
               audio: message[3],
+              mes_id: message[4],
             }
             return mes;
           });
@@ -183,7 +183,8 @@ export const Chat = (
 
     const userMes: MessageProps = {
       role: 'user',
-      content: userinput
+      content: userinput,
+      mes_id: 'current_user_message'
     };
 
     setChathistory(chatHistory => chatHistory.concat(userMes));
@@ -205,7 +206,7 @@ export const Chat = (
     }));
 
     const userMesSend = {
-      id: params.chatId,  
+      chat_id: params.chatId,  
       msg: userinput,
       role: 'user',
       images: images,

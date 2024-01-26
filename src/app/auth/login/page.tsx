@@ -96,7 +96,7 @@ export default function Page() {
           </Button>
           <button type="submit" className="text-left block rounded py-2 
             px-4 bg-slate-200 hover:bg-white text-black" id="password_confirm">Log In</button>
-          <a className="hover:text-white text-slate-300" href="register">Don't have an account? Sign Up.</a>
+          <a className="hover:text-white text-slate-300" href="register">Don&apos;t have an account? Sign Up.</a>
         </div>
       </form>
     </>

@@ -22,6 +22,7 @@ export const ChatList = ({
                         top-10 overflow-scroll">
             {chats.map((chat: any) => (
                 <ChatListItem
+                    key={chat.id}
                     id={chat.id}
                     name={chat.name}
                     character_name={chat.character_key.name}

@@ -30,6 +30,8 @@ export const MessageBox = ({
         border rounded-xl border-cyan-500 overflow-scroll bg-slate-950">
             {messages.map((message) => (
                 <Message
+                    key={message.mes_id}
+                    mes_id={message.mes_id}
                     role={message.role}
                     content={message.content}
                     src={classNames(

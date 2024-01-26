@@ -136,7 +136,7 @@ export const ChatCreate = ({
             <AlertDialogTitle>Create a new chat</AlertDialogTitle>
             <AlertDialogDescription>
               Make a new chat with any of your existing characters.
-              Click "Create Chat" when you're done.
+              Click &quot;Create Chat&quot; when you&lsquo;re done.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="grid gap-4 py-4">
