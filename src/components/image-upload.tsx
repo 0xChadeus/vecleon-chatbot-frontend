@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
-import { CldUploadButton } from "next-cloudinary";
 
 import { Button } from "@/components/ui/button";
 import { ImageIcon, X } from "lucide-react";
