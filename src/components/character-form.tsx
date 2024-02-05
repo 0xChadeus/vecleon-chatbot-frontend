@@ -66,7 +66,7 @@ export const CharacterForm = ({
             axios({
             withCredentials: true,
             method: 'put',
-            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_character/`,
+            url: `${process.env.MIDSERVER_URL}/api/get_character/`,
             data: {
                 id: characterId
                 },
@@ -151,7 +151,7 @@ export const CharacterForm = ({
                 axios({
                     withCredentials: true,
                     method: 'patch',
-                    url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_character/`,
+                    url: `${process.env.MIDSERVER_URL}/api/update_character/`,
                     data:  send_data,
                     headers: {"X-CSRFToken": csrftoken},
                 })                
@@ -162,7 +162,7 @@ export const CharacterForm = ({
                 axios({
                     withCredentials: true,
                     method: 'post',
-                    url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/create_character/`,
+                    url: `${process.env.MIDSERVER_URL}/api/create_character/`,
                     data: send_data,
                     headers: {"X-CSRFToken": csrftoken},
                 });

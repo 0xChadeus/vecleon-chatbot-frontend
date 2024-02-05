@@ -38,7 +38,7 @@ export const ProfileMenu = () => {
         axios({
           withCredentials: true,
           method: 'get',
-          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/logout/`,
+          url: `${process.env.MIDSERVER_URL}/authbackend/logout/`,
         }).then(function ( response: any) {
             router.push("../auth/login");
         });  

@@ -43,7 +43,7 @@ export const CancelDialog =() => {
         await axios({
             withCredentials: true,
             method: "put",
-            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/cancel_subscription/`,
+            url: `${process.env.MIDSERVER_URL}/api/cancel_subscription/`,
             headers: {"X-CSRFToken": csrftoken},
         })
         window.location.reload();

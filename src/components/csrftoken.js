@@ -10,7 +10,7 @@ export const CSRFToken = () => {
                 await axios({
                     withCredentials: true,
                     method: 'get',
-                    url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/getcsrftoken/`,
+                    url: `${process.env.MIDSERVER_URL}/authbackend/getcsrftoken/`,
                     mode: 'same-origin'
                 }).then(function (response) {
                     setCsrftoken(response.data);

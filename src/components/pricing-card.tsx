@@ -207,7 +207,7 @@ export const PricingCard = ({
       await axios({
         withCredentials: true,
         method: 'get',
-        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
+        url: `${process.env.MIDSERVER_URL}/authbackend/get_authstatus/`,
       }).then(function ( response: any) {
           if(response.data[0] === 'is_authenticated: false') {
             router.push("../auth/login");
@@ -217,7 +217,7 @@ export const PricingCard = ({
       await axios({
           withCredentials: true,
           method: "put",
-          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/checkout/`,
+          url: `${process.env.MIDSERVER_URL}/api/checkout/`,
           data: {
             product: product
           },
