@@ -19,7 +19,7 @@ const CharacterListPage = ({}) => {
       axios({
         withCredentials: true,
         method: 'get',
-        url: `${process.env.MIDSERVER_URL}/api/get_characters/`,
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_characters/`,
       }).then(function ( response: any) {
           setCharacters(response.data)
         }

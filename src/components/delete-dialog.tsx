@@ -64,7 +64,7 @@ export const DeleteDialog = ({
             data: {
               id: id  
             },
-            url: `${process.env.MIDSERVER_URL}/api/delete_character`,
+            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_character`,
             headers: {"X-CSRFToken": csrftoken},
         })
         window.location.reload();
@@ -78,7 +78,7 @@ export const DeleteDialog = ({
             data: {
                 id: id  
             },  
-            url: `${process.env.MIDSERVER_URL}/api/delete_world`,
+            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_world`,
             headers: {"X-CSRFToken": csrftoken},
         })
     }
@@ -91,7 +91,7 @@ export const DeleteDialog = ({
             data: {
                 id: id  
             },  
-            url: `${process.env.MIDSERVER_URL}/api/delete_chat`,
+            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_chat`,
             headers: {"X-CSRFToken": csrftoken},
         })
     }

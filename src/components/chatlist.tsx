@@ -11,7 +11,7 @@ export const ChatList = ({
         axios({
             withCredentials: true,
             method: "get",
-            url: `${process.env.MIDSERVER_URL}/api/get_chats/`
+            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_chats/`
         }).then(function ( response: any) {
             setChats(response.data);
         });

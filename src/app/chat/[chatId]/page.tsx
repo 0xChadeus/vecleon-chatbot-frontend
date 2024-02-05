@@ -14,7 +14,7 @@ import { NavBar } from "@/components/navbar";
 import { useId } from "react";
 // import { REST, Routes } from 'discord.js';
 
-const chatSocket = new WebSocket(`ws://${process.env.MIDSERVER_URL}/chat/test`);
+const chatSocket = new WebSocket(`ws://${process.env.NEXT_PUBLIC_MIDSERVER_URL}/chat/test`);
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
@@ -56,7 +56,7 @@ const Chat = (
     axios({
       withCredentials: true,
       method: 'get',
-      url: `${process.env.MIDSERVER_URL}/authbackend/get_authstatus/`,
+      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
     }).then(function ( response: any) {
         if(response.data[0] === 'is_authenticated: false') {
           router.push("../auth/login");
@@ -70,7 +70,7 @@ const Chat = (
       axios({
         withCredentials: true,
         method: 'put',
-        url: `${process.env.MIDSERVER_URL}/api/get_chat/`,
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_chat/`,
         data: {
           chat_id: params.chatId
         },
@@ -155,7 +155,7 @@ const Chat = (
         axios({
           withCredentials: true,
           method: 'post',
-          url: `${process.env.MIDSERVER_URL}/api/update_chat/`,
+          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
           data: aiMesSend,
           headers: {"X-CSRFToken": csrftoken},
         });
@@ -217,7 +217,7 @@ const Chat = (
     axios({
       withCredentials: true,
       method: 'post',
-      url: `${process.env.MIDSERVER_URL}/api/update_chat/`,
+      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
       data: userMesSend,
       headers: {"X-CSRFToken": csrftoken},
     });

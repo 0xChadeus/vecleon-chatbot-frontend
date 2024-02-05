@@ -101,7 +101,7 @@ export const ChatCreate = ({
       axios({
           withCredentials: true,
           method: "get",
-          url: `${process.env.MIDSERVER_URL}/api/get_characters/`
+          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_characters/`
       }).then(function ( response: any) {
           setCharacterlist(response.data);
       });
@@ -112,7 +112,7 @@ export const ChatCreate = ({
       await axios({
         withCredentials: true,
         method: "post",
-        url: `${process.env.MIDSERVER_URL}/api/create_chat/`,
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/create_chat/`,
         data: chatForm.getValues(),
         headers: {"X-CSRFToken": csrftoken},
       })

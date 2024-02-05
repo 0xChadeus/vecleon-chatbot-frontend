@@ -58,7 +58,7 @@ export const ChatListItem = ({
           data: {
             id: id  
           },
-          url: `${process.env.MIDSERVER_URL}/api/delete_chat/`,
+          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_chat/`,
           headers: {"X-CSRFToken": csrftoken},
       })
       window.location.reload();
