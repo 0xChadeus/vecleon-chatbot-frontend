@@ -61,7 +61,7 @@ export default function Page() {
       withCredentials: true,
       method: 'post',
       data: data,
-      url: 'http://127.0.0.1:7950/authbackend/register/',
+      url: `${process.env.NEXT_PUBLIC_API_URL}/authbackend/register/`,
       headers: {"X-CSRFToken": csrftoken},
     })
       .then(function (response: any) {

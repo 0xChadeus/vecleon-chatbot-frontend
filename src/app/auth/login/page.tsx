@@ -34,7 +34,7 @@ export default function Page() {
     axios({
       withCredentials: true,
       method: 'get',
-      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
+      url: `${process.env.MIDSERVER_URL}/authbackend/get_authstatus/`,
     }).then(function ( response: any) {
         if(response.data[0] === 'is_authenticated: true') {
           router.push("../../edit/characters");
@@ -56,7 +56,7 @@ export default function Page() {
       withCredentials: true,
       method: 'post',
       data: data,
-      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/login/`,
+      url: `${process.env.MIDSERVER_URL}/authbackend/login/`,
       headers: {"X-CSRFToken": csrftoken},
     }).then(function ( response: any) {
         if(response.data['success'] === 'login success') {
