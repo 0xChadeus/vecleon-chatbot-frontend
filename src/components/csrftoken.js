@@ -11,7 +11,7 @@ export const CSRFToken = () => {
                     withCredentials: true,
                     method: 'get',
                     url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/getcsrftoken/`,
-                    mode: 'same-origin'
+                    // mode: 'same-origin'
                 }).then(function (response) {
                     setCsrftoken(response.data);
                 }
