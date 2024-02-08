@@ -46,6 +46,7 @@ export default function Page() {
 
   const handleSubmit = (event: any) => {    
     const csrftoken = getCookie('csrftoken');  
+    console.log('AguagFWINWUNIAF: ', csrftoken);
     event.preventDefault();
 
     const data = {
