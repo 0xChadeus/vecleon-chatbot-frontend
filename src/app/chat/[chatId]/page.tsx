@@ -14,7 +14,7 @@ import { NavBar } from "@/components/navbar";
 import { useId } from "react";
 // import { REST, Routes } from 'discord.js';
 
-const chatSocket = new WebSocket(`ws://${process.env.NEXT_PUBLIC_MIDSERVER_URL}/chat/test`);
+const chatSocket = new WebSocket(`wss://${process.env.NEXT_PUBLIC_MIDSERVER_URL}/chat/test`);
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {

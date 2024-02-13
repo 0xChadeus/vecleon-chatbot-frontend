@@ -20,7 +20,7 @@ const SubscriptionsPage = () => {
       axios({
         withCredentials: true,
         method: 'get',
-        url: `${process.env.MIDSERVER_URL}/authbackend/get_authstatus/`,
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
       }).then(function ( response: any) {
           if(response.data[0] === 'is_authenticated: true') {
             setUserAuthenticated(true);
