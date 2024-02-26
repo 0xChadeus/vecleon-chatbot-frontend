@@ -37,7 +37,7 @@ export const SideBar = () => {
                     ©  
                 </div>
                 <div className='px-2 py-1 text-xs'>
-                    Copyright Vecleon Pty Ltd. 2023
+                    Copyright Vecleon Pty Ltd. 2024
                 </div>
             </li>
             </SheetContent>
