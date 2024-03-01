@@ -146,7 +146,7 @@ const Chat = (
         setChathistory(chatHistory => chatHistory.concat(aiMes));
         const csrftoken = getCookie('csrftoken');
         const aiMesSend = {
-          id: params.chatId,
+          chat_id: params.chatId,
           msg: currMes,
           role: 'ai',
           images: images,
