@@ -33,7 +33,7 @@ const CharacterListPage = ({}) => {
         sm:left-0 xl:w-1/2 w-full top-20 bottom-10  
         border rounded-md border-slate-700 overflow-scroll bg-slate-950">
           <div className="fixed xl:w-1/2 sm:w-full h-20 bg-slate-950 z-50 rounded-sm">
-          <a href="./characters/new">
+          <a href="https://vecleon.com/characters/new">
             <Button className="absolute left-6 top-6 rounded-xl">
               <UserPlus/>
             </Button>
