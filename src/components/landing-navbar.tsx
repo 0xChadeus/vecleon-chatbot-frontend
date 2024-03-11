@@ -2,38 +2,45 @@
 import { UserCircle2 } from "lucide-react";
 import { UserPlus2 } from "lucide-react";
 import { LandingSideBar } from "./landing-sidebar";
+import VecleonLogo from "./logo";
+import React from 'react';    
 
 export const LandingNavbar = () => {
     return(
-        <div className="flex items-center bg-slate-950 
-        h-14 border-b border-slate-700">
-            <svg className="relative flex">
-            </svg>
+        <div className="fixed w-full items-center bg-black 
+        h-14 z-50">
+            <div className="absolute flex left-14">
+                <span className="svgIcon t-popup-svg">
+                    <a href='https://vecleon.com' className='absolute flex'>
+                        <VecleonLogo/>
+                    </a>
+                </span>
+            </div>
             <div className="md:hidden">
                 <LandingSideBar/>
             </div>
-            <ul className="absolute flex flex-wrap xl:left-60 hidden md:inline-flex">
+            <ul className="absolute flex flex-wrap right-1/4 top-2 hidden md:inline-flex">
                 <li className="flex-1 w-32">
                     <a className="text-center block py-2 text-white font-semibold
-                    hover:text-cyan-400" href="info">About Us</a>
+                    hover:underline" href="info">About Us</a>
                 </li>
                 <li className="flex-1 w-32">
                     <a className="text-center block text-white font-semibold
-                    hover:text-cyan-400 py-2" href="blog">Blog</a>
+                    hover:underline py-2" href="blog">Blog</a>
                 </li>
                 <li className="flex-1 w-32">
                     <a className="block text-center py-2 text-white font-semibold
-                    hover:text-cyan-400" href="subscriptions">Pricing</a>
+                    hover:underline" href="subscriptions">Pricing</a>
                 </li>
                 <li className="flex-1 w-32">
                     <a className="block text-center py-2 text-white font-semibold
-                    hover:text-cyan-400" href="support">Support</a>
+                    hover:underline" href="support">Support</a>
                 </li>
             </ul>
-            <ul className="absolute flex top-1 right-2 py-1 xl:right-60">
+            <ul className="absolute flex top-1 py-1 right-0">
                 <li className="flex w-32">
                     <a className="flex block py-2 space-x-2 text-white font-semibold text-center
-                    hover:text-cyan-400" href="auth/register">
+                    hover:underline" href="auth/register">
                         <UserPlus2/>
                         <div>
                             Sign Up
@@ -42,7 +49,7 @@ export const LandingNavbar = () => {
                 </li>
                 <li className="flex w-32">
                     <a className="flex block py-2 space-x-2 text-white font-semibold text-center
-                    hover:text-cyan-400" href="auth/login">
+                    hover:underline" href="auth/login">
                         <UserCircle2/>
                         <div>
                             Login

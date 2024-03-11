@@ -20,7 +20,7 @@ export const LandingSideBar = () => {
                 </a>
                 <li className="flex-1">
                     <a className="text-center block py-16 text-white font-semibold
-                    hover:text-cyan-400 text-xl w-66 h-66" href="info">
+                    hover:underline text-xl w-66 h-66" href="info">
                         <Info className='relative left-28 top-6'/>
                         <div>
                             About Us
