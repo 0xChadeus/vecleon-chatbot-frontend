@@ -41,7 +41,7 @@
     min-width:100%;
     min-height:100%;
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     object-fit: cover;
     z-index: -1;
     filter: brightness(75%);

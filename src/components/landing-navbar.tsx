@@ -8,7 +8,7 @@ import React from 'react';
 export const LandingNavbar = () => {
     return(
         <div className="fixed w-full items-center bg-black 
-        h-14 z-50">
+        h-14 z-50 font-sans">
             <div className="absolute flex left-14">
                 <span className="svgIcon t-popup-svg">
                     <a href='https://vecleon.com' className='absolute flex'>
