@@ -5,6 +5,7 @@ import React, {useEffect, useRef} from 'react';
 import {useScroll, motion, useTransform} from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import VecleonLogo from '@/components/logo';
+import Footer from '@/components/footer';
 
 
 
@@ -48,34 +49,7 @@ export default function Home() {
       </div>
       </motion.div>
 
-      <footer className="bg-black h-52 text-left w-full">
-        <div className="relative flex top-3 left-6"> 
-          <span className="svgIcon t-popup-svg">
-            <a href='https://vecleon.com' className='flex'>
-              <VecleonLogo/>
-            </a>
-          </span>
-        </div>
-        <div className="relative flex top-0 left-1/3 text-slate-400">
-          <a>Valerie </a>
-          <a className="relative flex left-36"> Enterprise</a>
-          {/* <a className="relative flex left-72"> 1</a> */}
-        </div>
-        <a className="relative flex top-4 left-1/3 text-slate-400">
-          <a href={"https://vecleon.com/info"}>Company </a>
-          {/* <a className="absolute flex left-48"> uanifus</a>
-          <a className="absolute flex left-96"> uanifus</a> */}
-        </a>
-        <a className="relative flex top-8 left-1/3 text-slate-400">
-          <a>Contact </a>
-          {/* <a className="absolute flex left-34"> uanifus</a>
-          <a className="relative flex left-72"> uanifus</a> */}
-        </a>
-
-        <div className='absolute flex px-2 py-1 text-xs right-8'>
-        ©   Copyright Vecleon 2024
-        </div>
-      </footer>
+      <Footer/>
 
     </>
   )
