@@ -63,7 +63,7 @@ export default function Blog() {
             <div className="relative flex top-32 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {blogPosts.map((post) => (
                 <a href='https://vecleon.com/blog'>
-                  <Card className="max-w-md hover:shadow-lg transition-shadow h-full">
+                  <Card className="max-w-md hover:shadow-lg transition-shadow h-full" key={post.id}>
                     <img src={'./background4.png'} alt={post.title} className="w-full h-48 object-cover" />
                     <CardHeader>
                       <CardTitle>{post.title}</CardTitle>
