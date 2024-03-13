@@ -31,9 +31,9 @@ export default function Info() {
       <div id="features" className="text-left">
       <div className="container flex flex-col">
         <div className=" col-md-10 col-md-offset-1 section-title top-34">
-          <h2 className="relative flex left-0 text-3xl font-sans top-28 md:top-20 font-extrabold">VECLEON</h2>
-          <h3 className="relative flex left-0 text-2xl font-sans font-bold top-28 sm:top-40"></h3>
-          <h4 className="relative flex left-0 text-md font-sans top-28 sm:top-40"> cyka blyat</h4>
+          <h1 className="relative flex left-0 text-3xl font-sans top-28 md:top-20 font-extrabold">MAKING AI SYSTEMS THAT WILL IMPROVE YOUR QUALITY OF LIFE</h1>
+          <h2 className="relative flex left-0 text-2xl font-sans font-bold top-28 sm:top-40"></h2>
+          <h2 className="relative flex left-0 text-md font-sans top-28 sm:top-40"> At Vecleon, our mission is to create artificial intelligence systems which  </h2>
         </div>
       </div>
       </div>

@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="relative flex flex-col top-16 left-12 sm:left-1/4 text-slate-400">
           <a className="absolute flex top-0" href='https://vecleon.com/auth/register'>Valerie</a>
           <a className="absolute flex top-10" href='https://vecleon.com/support'>Contact</a>
-          <a className="absolute flex top-20" href='https://vecleon.com/careers'>Careers</a>
+          <a className="absolute flex top-20" href='https://vecleon.com/info'>Company</a>
         </div>
         <div className="relative flex flex-col top-16 left-48 sm:left-1/3 sm:left-96 text-slate-400">
           <a className="absolute flex top-0" href='https://vecleon.com/partners'>Enterprise</a>
