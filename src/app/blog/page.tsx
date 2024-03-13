@@ -62,8 +62,8 @@ export default function Blog() {
           <h1 className="relative flex left-0 text-3xl font-sans top-24 md:top-20 font-extrabold">BLOG</h1>
             <div className="relative flex top-32 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {blogPosts.map((post) => (
-                <a href='https://vecleon.com/blog'>
-                  <Card className="max-w-md hover:shadow-lg transition-shadow h-full" key={post.id}>
+                <a href='https://vecleon.com/blog' key={post.id}>
+                  <Card className="max-w-md hover:shadow-lg transition-shadow h-full" >
                     <img src={'./background4.png'} alt={post.title} className="w-full h-48 object-cover" />
                     <CardHeader>
                       <CardTitle>{post.title}</CardTitle>
