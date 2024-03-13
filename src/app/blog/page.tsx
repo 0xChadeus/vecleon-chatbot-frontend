@@ -6,6 +6,14 @@ import {useScroll, motion, useTransform} from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import VecleonLogo from '@/components/logo';
 import Footer from '@/components/footer';
+import {  
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+ } from '@/components/ui/card';
 
 
 
@@ -23,6 +31,26 @@ export default function Blog() {
   const infoScroll = useTransform(scrollYProgress, [0, 1], [0, -400]);
   const rd = Math.floor(Math.random() * -75) - 25;
 
+  const blogPosts = [
+    {
+      id: 1,
+      title: 'AI Companions: The Future of Personal Assistants is Here',
+      content: 'In our fast-paced, modern world, who couldn\'t use an extra helping hand to boost productivity and efficiency? Enter AI companions - artificially intelligent virtual assistants that offer powerful capabilities as your personal AI assistant interact with computers and access information information information information information information information information information information information information information information interact with computersinteract with computers',
+      author: 'John Doe',
+      date: 'March 15, 2023'
+    },
+    {
+      id: 2,
+      title: 'The Rise of ChatGPT: Exploring the Potential of Conversational AI',
+      content: 'In recent months, the tech world has been abuzz with the emergence of ChatGPT, a revolutionary conversational AI system developed by OpenAI. This cutting-edge technology has the potential to transform the way we interact with computers and access information information information information information information information information information information information information information information interact with computersinteract with computers',
+      author: 'Jane Smith',
+      date: 'February 20, 2023'
+    },
+    // Add more blog post objects as needed
+  ];
+
+
+
   return (
     <>
       <LandingNavbar/>
@@ -32,31 +60,27 @@ export default function Blog() {
       <div className="container flex flex-col">
         <div className=" col-md-10 col-md-offset-1 section-title">
           <h1 className="relative flex left-0 text-3xl font-sans top-24 md:top-20 font-extrabold">BLOG</h1>
-          <div className='relative flex flex-col top-32'>
-          <h1 >AI Companions: The Future of Personal Assistants is Here</h1>
-            In our fast-paced, modern world, who couldn&apos;t use an extra helping hand to boost productivity and efficiency? Enter <a href="...">AI companions</a> - artificially intelligent virtual assistants that offer powerful capabilities as your personal AI assistant.
-            <h2>What is an AI Companion?</h2>
-
-            Unlike smart speakers or smartphone AI, <a href="...">AI companions</a> provide highly advanced conversational AI tailored to your needs. Think of it as your own personal assistant available 24/7, powered by cutting-edge natural language AI technology.
-            <h3>AI Companion Features & Capabilities</h3>
-
-            <a href="...">AI companions</a> can assist you with a vast array of tasks:
-            <ul> <li>Running errands & scheduling</li> <li>Researching topics & answering questions</li> <li>Writing & editing assistance</li> <li>Data analysis projects</li> <li>Tutoring & explanations</li> <li>Coding & software development</li> <li>And much more across nearly any domain</li> </ul>
-
-            With seamless, contextual dialogue abilities, you can have natural conversations with your AI companion, asking follow-ups, giving new instructions, or switching topics freely.
-            <h2>Benefits of an AI Assistant</h2>
-
-            <b>Available 24/7</b>: No more waiting for office hours - your AI sidekick is always on-call.
-
-            <b>Boost Your Productivity</b>: Let your <a href="...">AI companion</a> handle tasks like research and data analysis, freeing you to focus on bigger priorities.
-
-            <b>Augment Your Intelligence</b>: While not self-aware, AI companions provide powerful augmented intelligence capabilities to complement your own skills.
-            <h2>Experience the Future of AI Assistants</h2>
-
-            Don&apos;t get left behind - unlock your productivity potential today with a cutting-edge <a href="...">AI companion</a> from [Company]. The future of personal assistants has arrived.
+            <div className="relative flex top-32 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {blogPosts.map((post) => (
+                <a href='https://vecleon.com/blog'>
+                  <Card className="max-w-md hover:shadow-lg transition-shadow h-full">
+                    <img src={'./background4.png'} alt={post.title} className="w-full h-48 object-cover" />
+                    <CardHeader>
+                      <CardTitle>{post.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow prose prose-sm max-h-40 overflow-hidden">
+                      <CardDescription>{post.content}</CardDescription>
+                    </CardContent>
+                    <CardFooter className="flex justify-between text-muted-foreground">
+                      <span>Author: {post.author}</span>
+                      <span>Date: {post.date}</span>
+                    </CardFooter>
+                  </Card>                
+                </a>
+              ))}
+            </div>          
             </div>
-        </div>
-        </div>
+          </div>
         </div>
       </div>
 
