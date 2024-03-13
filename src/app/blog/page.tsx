@@ -34,7 +34,7 @@ export default function Blog() {
           <h1 className="relative flex left-0 text-3xl font-sans top-24 md:top-20 font-extrabold">BLOG</h1>
           <div className='relative flex flex-col top-32'>
           <h1 >AI Companions: The Future of Personal Assistants is Here</h1>
-            In our fast-paced, modern world, who couldn't use an extra helping hand to boost productivity and efficiency? Enter <a href="...">AI companions</a> - artificially intelligent virtual assistants that offer powerful capabilities as your personal AI assistant.
+            In our fast-paced, modern world, who couldn&apos;t use an extra helping hand to boost productivity and efficiency? Enter <a href="...">AI companions</a> - artificially intelligent virtual assistants that offer powerful capabilities as your personal AI assistant.
             <h2>What is an AI Companion?</h2>
 
             Unlike smart speakers or smartphone AI, <a href="...">AI companions</a> provide highly advanced conversational AI tailored to your needs. Think of it as your own personal assistant available 24/7, powered by cutting-edge natural language AI technology.
@@ -53,7 +53,7 @@ export default function Blog() {
             <b>Augment Your Intelligence</b>: While not self-aware, AI companions provide powerful augmented intelligence capabilities to complement your own skills.
             <h2>Experience the Future of AI Assistants</h2>
 
-            Don't get left behind - unlock your productivity potential today with a cutting-edge <a href="...">AI companion</a> from [Company]. The future of personal assistants has arrived.
+            Don&apos;t get left behind - unlock your productivity potential today with a cutting-edge <a href="...">AI companion</a> from [Company]. The future of personal assistants has arrived.
             </div>
         </div>
         </div>
