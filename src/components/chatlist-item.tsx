@@ -32,7 +32,7 @@ export const ChatListItem = ({
 }: ChatListItemProps) => {
   const router = useRouter();
   const handleClick = (event: any) => {
-    router.push(`../chat/${id}`)
+    router.push(`${process.env.NEXT_PUBLIC_SELF_URL}/chat/${id}`)
   }
   function getCookie(name: any) {
     let cookieValue = null;

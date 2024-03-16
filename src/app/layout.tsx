@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'WaifuHub',
-  description: 'WaifuHub',
+  title: 'Vecleon',
+  description: 'AI Products that will change your life',
 }
 
 export default function RootLayout({

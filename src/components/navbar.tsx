@@ -2,14 +2,20 @@
 import { ProfileMenu } from "@/components/profile_menu";
 import { SideBar } from './sidebar';
 import { ChatList } from './chatlist';
+import VecleonLogo from "./logo";
 
 export const NavBar = () => {
     return(
         <div className="fixed w-full flex items-center bg-slate-950 
         h-14 z-50 border-b border-slate-700">
+            <div className="absolute flex top-0">
+                <a href='https://vecleon.com' className='absolute flex'>
+                    <VecleonLogo/>
+                </a>
+            </div>
+            <div className="absolute flex left-20 top-0">
             <SideBar/>
-            <svg className="relative flex">
-            </svg>
+            </div>
             <ul className="absolute top-1 right-4 py-1">
                 <ProfileMenu/>
             </ul>
