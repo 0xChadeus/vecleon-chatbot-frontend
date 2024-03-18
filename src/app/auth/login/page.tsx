@@ -68,10 +68,6 @@ export default function Page() {
           console.log(response);
         }
     });  
-
-    if(captcha) {
-      console.log('captcha success');
-    }
   }
   
 
@@ -100,11 +96,12 @@ export default function Page() {
             className="text-white"/> : 
             <FaEye size={20} className="text-white" />}
           </Button>
-          <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}`} onChange={setCaptcha}/>
+          {/* <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}`} onChange={setCaptcha}/> */}
           <button type="submit" className="text-left block rounded py-2 
             px-4 bg-slate-200 hover:bg-white text-black" id="password_confirm">Log In</button>
           <a className="hover:text-white text-slate-300" href="register">Don&apos;t have an account? Sign Up.</a>
         </div>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
       </form>
     </>
   );

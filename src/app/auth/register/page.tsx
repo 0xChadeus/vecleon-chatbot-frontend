@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import {Button, Form, InputGroup} from "react-bootstrap";
 import {FaEye, FaEyeSlash} from "react-icons/fa";
 import { LandingNavbar } from "@/components/landing-navbar";
+import ReCAPTCHA from "react-google-recaptcha";
 
 
 // authentication (login/signup) page
@@ -16,6 +17,7 @@ export default function Page() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordconfirm] = useState('');
   const [showPassword, setShowpassword] = useState<boolean>(false);
+  const [captcha, setCaptcha] = useState<string | null>();
   const router = useRouter()
 
   const emailFormat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -103,10 +105,10 @@ export default function Page() {
             className="text-white"/> : 
             <FaEye size={20} className="text-white" />}
           </Button>
+          <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}`} onChange={setCaptcha}/>
           <button type="submit" className="text-left block rounded py-2 
             px-4 bg-white hover:bg-cyan-200 text-black" id="password_confirm">Sign Up</button>
           <a className="hover:text-white text-slate-300" href="login">Already have an account? Sign in.</a>
-
         </div>
       </form>
     </>
