@@ -1,0 +1,37 @@
+
+These Terms of Use ("Terms") govern your use of the AI chatbot service ("Service") provided by Vecleon Pty. Ltd. ("Provider"). By accessing or using the Service, you agree to be bound by these Terms. If you do not agree to these Terms, you may not use the Service.
+
+    Description of Service: The Service provided by the Provider consists of an AI-powered chatbot designed to assist users with various inquiries and tasks.
+
+    User Conduct:
+    a. You agree to use the Service only for lawful purposes and in a manner consistent with these Terms and any applicable laws and regulations.
+    b. You shall not use the Service in any way that may cause harm to the Provider, other users, or any third party.
+    c. You shall not use the Service to engage in any malicious activities, including but not limited to hacking, phishing, or distributing malware.
+
+    Accuracy and Reliability:
+    a. While the Provider strives to ensure the accuracy and reliability of the Service, we do not guarantee that the information provided by the chatbot is always accurate, complete, or up-to-date.
+    b. You acknowledge that the Service may provide general information and responses and should not be considered as professional advice. You should seek professional advice for specific concerns.
+
+    Intellectual Property:
+    a. The Service, including but not limited to the chatbot, its software, algorithms, and any content provided, are the property of the Provider and are protected by intellectual property laws.
+    b. You are granted a limited, non-exclusive, non-transferable license to use the Service for its intended purpose. You shall not reproduce, modify, distribute, or create derivative works based on the Service without prior written consent from the Provider.
+
+    Privacy:
+    a. By using the Service, you agree to the Provider's Privacy Policy, which outlines how your personal information is collected, used, and protected.
+    b. The Provider may collect and process personal data to improve the Service and for other legitimate purposes as outlined in the Privacy Policy.
+
+    Limitation of Liability:
+    a. The Provider shall not be liable for any direct, indirect, incidental, special, or consequential damages arising out of or in any way connected with your use of the Service.
+    b. In no event shall the Provider's total liability exceed the amount paid by you, if any, for accessing the Service.
+
+    Modifications to Terms:
+    a. The Provider reserves the right to modify these Terms at any time without prior notice. Any changes to the Terms will be effective immediately upon posting.
+    b. Your continued use of the Service after the posting of the modified Terms constitutes your acceptance of the changes.
+
+    Termination: The Provider reserves the right to suspend or terminate your access to the Service at any time for any reason without prior notice.
+
+    Governing Law: These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law provisions.
+
+    Contact: If you have any questions or concerns about these Terms, please contact us at [Your Contact Information].
+
+By using the Service, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use.

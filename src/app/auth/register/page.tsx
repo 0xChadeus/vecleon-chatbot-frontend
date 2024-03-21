@@ -109,6 +109,7 @@ export default function Page() {
           <button type="submit" className="text-left block rounded py-2 
             px-4 bg-white hover:bg-cyan-200 text-black" id="password_confirm">Sign Up</button>
           <a className="hover:text-white text-slate-300" href="login">Already have an account? Sign in.</a>
+          <div className="text-slate-300 text-xs pt-4" >By signing up and/or using this service, you agree to the <a className="hover:text-white font-bold" href="https://vecleon.com/terms"> terms of service</a></div>
         </div>
       </form>
     </>
