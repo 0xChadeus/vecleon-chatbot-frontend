@@ -11,8 +11,6 @@ import TextareaAutosize from 'react-textarea-autosize';
 import {MessageBox} from "@/components/messagebox";
 import { MessageProps } from "@/components/message";
 import { NavBar } from "@/components/navbar";
-import { useId } from "react";
-// import { REST, Routes } from 'discord.js';
 
 const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/test`);
 const Chat = (
@@ -30,7 +28,13 @@ const Chat = (
     personality_summary: '',
     scenario: '',
   });  
+
+  //prompts
   const [systemPrompt, setSystemPrompt] = useState('');
+  const [prefill, setPrefill] = useState('');
+  const [nsfw, setNsfw] = useState('');
+  const [extra, setExtra] = useState('');
+
   const [images, setImages] = useState<string[]>([]);
   const [audio, setAudio] = useState<string>('');
 
@@ -100,6 +104,28 @@ const Chat = (
       const sysprompt = text.replaceAll('{{char}}', character.name);
       setSystemPrompt(sysprompt.replaceAll('{{user}}', 'User'));
     })    
+
+    fetch('/prefill.txt')
+    .then((r) => r.text())
+    .then(text  => {
+      const sysprompt = text.replaceAll('{{char}}', character.name);
+      setPrefill(sysprompt.replaceAll('{{user}}', 'User'));
+    })    
+
+    fetch('/nsfw.txt') 
+    .then((r) => r.text())
+    .then(text  => {
+      const sysprompt = text.replaceAll('{{char}}', character.name);
+      setNsfw(sysprompt.replaceAll('{{user}}', 'User'));
+    })
+
+    fetch('/extra.txt')
+    .then((r) => r.text())
+    .then(text  => {
+      const sysprompt = text.replaceAll('{{char}}', character.name);
+      setExtra(sysprompt.replaceAll('{{user}}', 'User'));
+    })
+
   }, [character]);
 
   useEffect(() => {
@@ -196,10 +222,13 @@ const Chat = (
                     character.scenario,
                     'These are the last few messages in the conversation:',
                     context, 
-                    'User:' + userinput,
+                    'User: ' + userinput,
                     'complete the next message for ' + character.name,
                     character.name + ': ',
-                    params.chatId,];
+                    params.chatId,
+                    prefill,
+                    nsfw,
+                    extra,];
 
     chatSocket.send(JSON.stringify({
       'message': message
