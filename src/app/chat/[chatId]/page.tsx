@@ -63,10 +63,20 @@ const Chat = (
       url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
     }).then(function ( response: any) {
         if(response.data[0] === 'is_authenticated: false') {
-          router.push("../auth/login");
+          router.push("https://vecleon.com/auth/register/");
+        }
+    });
+    axios({
+      withCredentials: true,
+      method: 'get',
+      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription_is_active/`,
+    }).then(function ( response: any) {
+        if(response.data[0] === 'is_authenticated: false') {
+          router.push("https://vecleon.com/subscriptions");
         }
     });
   }, [])
+  
 
 
   useEffect(() => {
