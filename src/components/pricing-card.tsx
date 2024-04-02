@@ -84,16 +84,8 @@ const standardPack = [
     canAccess: "Yes",
   },
   {
-    feature: "Discord Integration",
-    canAccess: "Yes",
-  },
-  {
-    feature: "Google Calendar Integration",
-    canAccess: "Yes",
-  },
-  {
     feature: "Voice Calls",
-    canAccess: "Yes",
+    canAccess: "No",
   },
   {
     feature: "Long Term Memory",
@@ -117,11 +109,11 @@ const standardPack = [
   },
   {
     feature: "Companion Creation",
-    canAccess: "Yes, limit of 20",
+    canAccess: "Limit of 20",
   },
   {
-    feature: "Chat Limit",
-    canAccess: "10,000 messages per month",
+    feature: "Token Generation",
+    canAccess: "$0.02 per 100 tokens",
   },
 ]
 
@@ -132,14 +124,6 @@ const unlimitedPack = [
     canAccess: "Yes",
   },
   {
-    feature: "Discord Integration",
-    canAccess: "Yes",
-  },
-  {
-    feature: "Google Calendar Integration",
-    canAccess: "Yes",
-  },
-  {
     feature: "Voice Calls",
     canAccess: "Yes",
   },
@@ -165,11 +149,11 @@ const unlimitedPack = [
   },
   {
     feature: "Companion Creation",
-    canAccess: "Yes, limit of 200",
+    canAccess: "No limit",
   },
   {
-    feature: "Chat Limit",
-    canAccess: "No Limit",
+    feature: "Token Generation",
+    canAccess: "$0.015 per 100 tokens",
   },
 ]
 
@@ -210,7 +194,7 @@ export const PricingCard = ({
         url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
       }).then(function ( response: any) {
           if(response.data[0] === 'is_authenticated: false') {
-            router.push("../auth/login");
+            router.push("https://vecleon.com/auth/register/");
           }
       });      
 
@@ -236,12 +220,12 @@ export const PricingCard = ({
             <CardTitle>
               {product === 'starter' && <h1>Starter</h1> }
               {product === 'standard' && <h1>Standard</h1> }
-              {product === 'unlimited' && <h1>Unlimited</h1> }
+              {product === 'unlimited' && <h1>Unlimited (Coming Soon)</h1> }
           
             <br/><br/>
               {product === 'starter' && <div>$4.99/month</div> }
-              {product === 'standard' && <div>$19.99/month</div> }
-              {product === 'unlimited' && <div>$29.99/month</div> }
+              {product === 'standard' && <div>$2.99/month</div> }
+              {product === 'unlimited' && <div>$14.99/month</div> }
             </CardTitle>
             <CardDescription>
              <br/> 
@@ -282,9 +266,16 @@ export const PricingCard = ({
             </Table>
           </CardContent>
           <CardFooter className="flex justify-between">
+            {product === 'standard' &&               
               <Button className="space-x-1" onClick={handleSubmit}>
                 <CreditCard/>  <div>Buy Now</div>
               </Button>
+            }
+            {product === 'unlimited' &&               
+              <Button className="space-x-1">
+                <CreditCard/>  <div>Coming Soon</div>
+              </Button>
+            }
           </CardFooter>
         </Card>     
       </> 

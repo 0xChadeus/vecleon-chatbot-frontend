@@ -227,8 +227,7 @@ const Chat = (
                     character.name + ': ',
                     params.chatId,
                     prefill,
-                    nsfw,
-                    extra,];
+                    nsfw,];
 
     chatSocket.send(JSON.stringify({
       'message': message

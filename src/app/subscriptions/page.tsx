@@ -30,11 +30,6 @@ const SubscriptionsPage = () => {
         <div className="xl:absolute xl:flex xl:flex-row xl:left-96 xl:right-96 xl:top-12 relative top-24">
           <div className='xl:py-10 md:py-2 px-2'>
             <PricingCard
-              product='starter'
-            />
-          </div>
-          <div className='xl:py-10 md:py-2 px-2'>
-            <PricingCard
               product='standard'
             />
           </div>
