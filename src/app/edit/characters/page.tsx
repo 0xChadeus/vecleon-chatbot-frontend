@@ -50,7 +50,7 @@ const CharacterListPage = ({}) => {
         url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription_is_active/`,
       }).then(function ( response: any) {
           console.log(response);
-          if(response.data[0] === 'response: inactive') {
+          if(response.data.response === 'inactive') {
             router.push("https://vecleon.com/subscriptions");
           }
       });
