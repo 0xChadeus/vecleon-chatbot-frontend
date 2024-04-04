@@ -54,7 +54,7 @@ const AccountPage = ({}) => {
       url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription/`,
     }).then(function ( response: any) {
         console.log(response);
-        if(response.data.response == "not_subscribed") {
+        if(response.data[0] == "response: not_subscribed") {
           setSubscriptionStatus(false);
         }      
         setSubscriptionStatus(true);
@@ -170,7 +170,6 @@ const AccountPage = ({}) => {
         <Button onClick={getPortal} className="space-x-2 absolute top-36">
           <div>Manage Subscription</div>  <div><CreditCardIcon/></div>
         </Button>
-        {/* {subscriptionCancelled? <></> : <CancelDialog/>} */}
       </div>
     </div>
 

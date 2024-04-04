@@ -15,6 +15,32 @@ const CharacterListPage = ({}) => {
     const [characters, setCharacters] = useState<ListItemProps[]>([]);
 
     const router = useRouter();
+
+    useEffect(() => {
+      axios({
+        withCredentials: true,
+        method: 'get',
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
+      }).then(function ( response: any) {
+          if(response.data[0] === 'is_authenticated: false') {
+            router.push("https://vecleon.com/auth/login");
+          } else {
+            console.log(response.data);
+          }
+      });  
+
+      axios({
+        withCredentials: true,
+        method: 'get',
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription_is_active/`,
+      }).then(function ( response: any) {
+          if(response.data[0] === 'response: inactive') {
+            router.push("https://vecleon.com/subscriptions");
+          }
+      });
+  
+    }, []);
+  
     useEffect(() => {
       axios({
         withCredentials: true,
