@@ -29,18 +29,9 @@ const CharacterListPage = ({}) => {
           }
       });  
 
-      axios({
-        withCredentials: true,
-        method: 'get',
-        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription_is_active/`,
-      }).then(function ( response: any) {
-          if(response.data[0] === 'response: inactive') {
-            router.push("https://vecleon.com/subscriptions");
-          }
-      });
   
     }, []);
-  
+
     useEffect(() => {
       axios({
         withCredentials: true,
@@ -50,6 +41,19 @@ const CharacterListPage = ({}) => {
           setCharacters(response.data)
         }
       );
+    }, [])
+  
+    useEffect(() => {
+      axios({
+        withCredentials: true,
+        method: 'get',
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription_is_active/`,
+      }).then(function ( response: any) {
+          console.log(response);
+          if(response.data[0] === 'response: inactive') {
+            router.push("https://vecleon.com/subscriptions");
+          }
+      });
     }, [])
 
     return (
