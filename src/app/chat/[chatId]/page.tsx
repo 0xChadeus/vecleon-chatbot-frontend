@@ -235,9 +235,9 @@ const Chat = (
                     'User: ' + userinput,
                     'complete the next message for ' + character.name,
                     character.name + ': ',
-                    params.chatId,
                     prefill,
-                    nsfw,];
+                    nsfw,
+                    params.chatId,];
 
     chatSocket.send(JSON.stringify({
       'message': message
