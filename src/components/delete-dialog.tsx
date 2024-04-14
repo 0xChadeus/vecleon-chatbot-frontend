@@ -61,7 +61,7 @@ export const DeleteDialog = ({
             data: {
               id: id  
             },
-            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_character`,
+            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_character/`,
             headers: {"X-CSRFToken": csrftoken},
         })
         window.location.reload();
