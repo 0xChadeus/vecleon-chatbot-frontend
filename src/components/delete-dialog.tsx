@@ -8,15 +8,11 @@ import {
   AlertDialogHeader,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Trash2 } from "lucide-react"
 import { CSRFToken } from "./csrftoken"
 import { AlertDialogDescription, AlertDialogTitle } from "@radix-ui/react-alert-dialog"
 import { useRouter } from "next/navigation"
 const axios = require("axios");
-import { useState } from "react"
-import { s3Delete } from "./aws-s3"
 
 interface DeleteDialogProps {
     id: string;
@@ -61,7 +57,7 @@ export const DeleteDialog = ({
 
         await axios({
             withCredentials: true,
-            method: "delete",
+            method: "post",
             data: {
               id: id  
             },
@@ -83,20 +79,6 @@ export const DeleteDialog = ({
             headers: {"X-CSRFToken": csrftoken},
         })
     }
-
-    const deleteChat = (event: any) => {
-        const csrftoken = getCookie('csrftoken');
-        axios({
-            withCredentials: true,
-            method: "delete",
-            data: {
-                id: id  
-            },  
-            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_chat`,
-            headers: {"X-CSRFToken": csrftoken},
-        })
-    }
-
 
   return (
     <>

@@ -14,9 +14,7 @@ import { Wand2 } from "lucide-react";
 import { CSRFToken } from "./csrftoken";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import generateUploadUrl from "./aws-s3"
 import crypto, { randomBytes } from "crypto"
-import { NavBar } from "./navbar";
 
 
 interface CharacterFormProps {
@@ -65,7 +63,7 @@ export const CharacterForm = ({
             const csrftoken = getCookie('csrftoken');
             axios({
             withCredentials: true,
-            method: 'put',
+            method: 'get',
             url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_character/`,
             data: {
                 id: characterId
