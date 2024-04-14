@@ -57,7 +57,7 @@ export const DeleteDialog = ({
 
         await axios({
             withCredentials: true,
-            method: "post",
+            method: "delete",
             data: {
               id: id  
             },
