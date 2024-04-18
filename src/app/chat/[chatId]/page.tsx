@@ -201,6 +201,7 @@ const Chat = (
         setCurrmes('');
         setImages([]);
         setIsLoading(false);
+        setContext(context + '\n' + character.name + currMes);
       }
 
       if(data.is_image) {
@@ -228,6 +229,8 @@ const Chat = (
       content: userinput,
       mes_id: 'current_user_message'
     };
+
+    setContext(context + '\n' + 'User: ' + userinput);
 
     setChathistory(chatHistory => chatHistory.concat(userMes));
 

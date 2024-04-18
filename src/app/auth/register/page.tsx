@@ -38,6 +38,20 @@ export default function Page() {
     return cookieValue;
   }
 
+  useEffect(() => {
+    axios({
+      withCredentials: true,
+      method: 'get',
+      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
+    }).then(function ( response: any) {
+        if(response.data[0] === 'is_authenticated: true') {
+          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/edit/characters`);
+        } else {
+          console.log(response.data);
+        }
+    });  
+  }, []);
+
   const handleSubmit = (event: any) => {    
     const csrftoken = getCookie('csrftoken');
 
