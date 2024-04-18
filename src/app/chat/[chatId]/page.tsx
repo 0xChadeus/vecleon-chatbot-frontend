@@ -311,7 +311,7 @@ const Chat = (
           color="white"
           loading={isLoading}
           cssOverride={{margin: 'auto'}}
-          size={150}
+          size={25}
           aria-label="Loading Spinner"
           data-testid="loader"
         /> :
@@ -320,7 +320,6 @@ const Chat = (
           type="submit"> <BsFillArrowRightSquareFill/>
         </button> 
         }
-
       </div>
     </>
   );
