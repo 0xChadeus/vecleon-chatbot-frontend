@@ -201,7 +201,7 @@ const Chat = (
         setCurrmes('');
         setImages([]);
         setIsLoading(false);
-        setContext(context + '\n' + character.name + currMes);
+        setContext(context + '\n' + character.name + ': ' + currMes);
       }
 
       if(data.is_image) {
