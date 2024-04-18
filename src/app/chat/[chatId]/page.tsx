@@ -302,7 +302,7 @@ const Chat = (
             text-white mr-3 py-2 px-3 leading-tight focus:outline-none h-fit"
             value={userinput}
             onChange={(e: any) => { setUserinput(e.target.value); } } 
-            onKeyDown={onEnterPress}
+            onKeyDown={isLoading? undefined: onEnterPress}
             maxRows={5}
           />
         </form> 
