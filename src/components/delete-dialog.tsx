@@ -67,19 +67,7 @@ export const DeleteDialog = ({
         window.location.reload();
     }
 
-    const deleteWorld = (event: any) => {
-        const csrftoken = getCookie('csrftoken');
-        axios({
-            withCredentials: true,
-            method: "delete",
-            data: {
-                id: id  
-            },  
-            url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_world`,
-            headers: {"X-CSRFToken": csrftoken},
-        })
-    }
-
+  
   return (
     <>
     <CSRFToken/>
