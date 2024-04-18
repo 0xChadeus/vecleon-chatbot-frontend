@@ -307,10 +307,6 @@ const Chat = (
           />
         </form> 
         {isLoading ?
-        <button form='send-msg' className="flex flex-wrap px-4 text-cyan-400 
-        text-2xl font-semibold hover:text-cyan-200" 
-          type="submit"> <BsFillArrowRightSquareFill/>
-        </button> : 
         <RingLoader
           color="white"
           loading={isLoading}
@@ -318,7 +314,11 @@ const Chat = (
           size={150}
           aria-label="Loading Spinner"
           data-testid="loader"
-        />
+        /> :
+        <button form='send-msg' className="flex flex-wrap px-4 text-cyan-400 
+        text-2xl font-semibold hover:text-cyan-200" 
+          type="submit"> <BsFillArrowRightSquareFill/>
+        </button> 
         }
 
       </div>
