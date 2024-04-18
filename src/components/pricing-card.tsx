@@ -194,7 +194,7 @@ export const PricingCard = ({
         url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
       }).then(function ( response: any) {
           if(response.data[0] === 'is_authenticated: false') {
-            router.push("https://vecleon.com/auth/register/");
+            router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/register`);
           }
       });      
 

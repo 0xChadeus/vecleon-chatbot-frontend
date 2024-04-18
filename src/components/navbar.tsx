@@ -9,7 +9,7 @@ export const NavBar = () => {
         <div className="fixed w-full flex items-center bg-slate-950 
         h-14 z-50 border-b border-slate-700">
             <div className="absolute flex top-0">
-                <a href='https://vecleon.com' className='absolute flex'>
+                <a href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/`} className='absolute flex'>
                     <VecleonLogo/>
                 </a>
             </div>

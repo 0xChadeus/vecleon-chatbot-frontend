@@ -39,7 +39,7 @@ export default function Page() {
       url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
     }).then(function ( response: any) {
         if(response.data[0] === 'is_authenticated: true') {
-          router.push("https://vecleon.com/edit/characters");
+          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/edit/characters`);
         } else {
           console.log(response.data);
         }

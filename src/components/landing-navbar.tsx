@@ -11,7 +11,7 @@ export const LandingNavbar = () => {
         h-14 z-50 font-sans">
             <div className="absolute flex left-14">
                 <span className="svgIcon t-popup-svg">
-                    <a href='https://vecleon.com' className='absolute flex'>
+                    <a href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/`} className='absolute flex'>
                         <VecleonLogo/>
                     </a>
                 </span>
@@ -22,25 +22,25 @@ export const LandingNavbar = () => {
             <ul className="absolute flex flex-wrap right-1/4 top-2 hidden md:inline-flex">
                 <li className="flex-1 w-32">
                     <a className="text-center block py-2 text-white font-semibold
-                    hover:underline" href="https://vecleon.com/info">About Us</a>
+                    hover:underline" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/info`}>About Us</a>
                 </li>
                 <li className="flex-1 w-32">
                     <a className="text-center block text-white font-semibold
-                    hover:underline py-2" href="https://vecleon.com/blog">Blog</a>
+                    hover:underline py-2" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/blog`}>Blog</a>
                 </li>
                 <li className="flex-1 w-32">
                     <a className="block text-center py-2 text-white font-semibold
-                    hover:underline" href="https://vecleon.com/subscriptions">Pricing</a>
+                    hover:underline" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/subscriptions`}>Pricing</a>
                 </li>
                 <li className="flex-1 w-32">
                     <a className="block text-center py-2 text-white font-semibold
-                    hover:underline" href="https://vecleon.com/support">Support</a>
+                    hover:underline" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/support`}>Support</a>
                 </li>
             </ul>
             <ul className="absolute flex top-1 py-1 right-0">
                 <li className="flex w-32">
                     <a className="flex block py-2 space-x-2 text-white font-semibold text-center
-                    hover:underline" href="https://vecleon.com/auth/register">
+                    hover:underline" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/register`}>
                         <UserPlus2/>
                         <div>
                             Sign Up
@@ -49,7 +49,7 @@ export const LandingNavbar = () => {
                 </li>
                 <li className="flex w-32">
                     <a className="flex block py-2 space-x-2 text-white font-semibold text-center
-                    hover:underline" href="https://vecleon.com/auth/login">
+                    hover:underline" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`}>
                         <UserCircle2/>
                         <div>
                             Login

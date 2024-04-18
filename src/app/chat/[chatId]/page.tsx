@@ -1,7 +1,7 @@
 'use client';
 import "../../globals.css";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, CSSProperties } from "react";
 const axios = require('axios');
 import { useRouter } from 'next/navigation'
 var classNames = require('classnames');
@@ -11,11 +11,14 @@ import TextareaAutosize from 'react-textarea-autosize';
 import {MessageBox} from "@/components/messagebox";
 import { MessageProps } from "@/components/message";
 import { NavBar } from "@/components/navbar";
+import RingLoader from "react-spinners/RingLoader"
 
 const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/test`);
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [currMes, setCurrmes] = useState<string>('');
   const [userinput, setUserinput] = useState<string>('');
@@ -63,7 +66,7 @@ const Chat = (
       url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
     }).then(function ( response: any) {
         if(response.data[0] === 'is_authenticated: false') {
-          router.push("https://vecleon.com/auth/register/");
+          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/register/`);
         }
     });
     axios({
@@ -72,7 +75,7 @@ const Chat = (
       url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription_is_active/`,
     }).then(function ( response: any) {
         if(response.data.response === 'inactive') {
-          router.push("https://vecleon.com/subscriptions");
+          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/subscriptions`);
         }
     });
 }, [])
@@ -197,6 +200,7 @@ const Chat = (
         });
         setCurrmes('');
         setImages([]);
+        setIsLoading(false);
       }
 
       if(data.is_image) {
@@ -216,6 +220,8 @@ const Chat = (
   const handleSubmit = async (e: any) => {
     // send user message 
     e.preventDefault();
+
+    setIsLoading(true);
 
     const userMes: MessageProps = {
       role: 'user',
@@ -300,10 +306,21 @@ const Chat = (
             maxRows={5}
           />
         </form> 
+        {isLoading ?
         <button form='send-msg' className="flex flex-wrap px-4 text-cyan-400 
         text-2xl font-semibold hover:text-cyan-200" 
           type="submit"> <BsFillArrowRightSquareFill/>
-        </button>
+        </button> : 
+        <RingLoader
+          color="white"
+          loading={isLoading}
+          cssOverride={{margin: 'auto'}}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+        }
+
       </div>
     </>
   );
