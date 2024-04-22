@@ -121,22 +121,22 @@ const Chat = (
     fetch('/prefill.txt')
     .then((r) => r.text())
     .then(text  => {
-      const sysprompt = text.replaceAll('{{char}}', character.name);
-      setPrefill(sysprompt.replaceAll('{{user}}', 'User'));
+      const prefill_text = text.replaceAll('{{char}}', character.name);
+      setPrefill(prefill_text.replaceAll('{{user}}', 'User'));
     })    
 
     fetch('/nsfw.txt') 
     .then((r) => r.text())
     .then(text  => {
-      const sysprompt = text.replaceAll('{{char}}', character.name);
-      setNsfw(sysprompt.replaceAll('{{user}}', 'User'));
+      const nsfw_text = text.replaceAll('{{char}}', character.name);
+      setNsfw(nsfw_text.replaceAll('{{user}}', 'User'));
     })
 
     fetch('/extra.txt')
     .then((r) => r.text())
     .then(text  => {
-      const sysprompt = text.replaceAll('{{char}}', character.name);
-      setExtra(sysprompt.replaceAll('{{user}}', 'User'));
+      const extra_text = text.replaceAll('{{char}}', character.name);
+      setExtra(extra_text.replaceAll('{{user}}', 'User'));
     })
 
   }, [character]);
@@ -239,7 +239,7 @@ const Chat = (
                     character.description,
                     character.personality_summary,
                     character.scenario,
-                    'These are the last few messages in the conversation:',
+                    '',
                     context, 
                     'User: ' + userinput,
                     'complete the next message for ' + character.name,
