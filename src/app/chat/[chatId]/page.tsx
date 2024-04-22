@@ -111,7 +111,7 @@ const Chat = (
 
 
   useEffect(() => {
-    fetch('/system_prompt.txt')
+    fetch('/system_prompt1.txt')
     .then((r) => r.text())
     .then(text  => {
       const sysprompt = text.replaceAll('{{char}}', character.name);
@@ -201,7 +201,7 @@ const Chat = (
         setCurrmes('');
         setImages([]);
         setIsLoading(false);
-        setContext(context + '\n' + character.name + ': ' + currMes);
+        setContext(context => context.concat('\n' + character.name + ': ' + currMes));
       }
 
       if(data.is_image) {
@@ -230,7 +230,7 @@ const Chat = (
       mes_id: 'current_user_message'
     };
 
-    setContext(context + '\n' + 'User: ' + userinput);
+    setContext(context => context.concat('\n' + 'User: ' + userinput));
 
     setChathistory(chatHistory => chatHistory.concat(userMes));
 
