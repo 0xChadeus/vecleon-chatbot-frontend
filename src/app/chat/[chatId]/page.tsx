@@ -141,25 +141,6 @@ const Chat = (
 
   }, [character]);
 
-  useEffect(() => {
-    let n = 0;
-    let contextString = ''
-    for(let i = 0; i < chatHistory.length; i++) {
-      const message = chatHistory[i];
-      n += message.content.length;
-      if(n > 8000) {
-        break;
-      }
-      if(message.role == 'ai') {
-        contextString += '\n' + character.name + ': ' + message.content;
-      } else {
-        contextString += '\n' + 'User' + ': ' + message.content;
-      }
-    }
-    setContext(contextString);
-  }, [chatHistory]);
-
-
 
   useEffect(() => {
     chatSocket.onclose = () => {
