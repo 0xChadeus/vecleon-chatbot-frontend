@@ -101,6 +101,7 @@ const Chat = (
               audio: message[3],
               mes_id: message[4],
             }
+            setContext(context => context.concat('\n' + message[1]));
             return mes;
           });
           setChathistory(msgHistory);
