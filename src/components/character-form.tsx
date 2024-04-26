@@ -29,8 +29,8 @@ const characterFormSchema = z.object({
         {message: "Name must not be more than 200 characters"}),
     description: z.string().min(1, {
         message: "Description is required.",
-    }).max(10000, 
-        {message: "Description must not be more than 10000 characters"}),
+    }).max(15000, 
+        {message: "Description must not be more than 15000 characters"}),
     src: z.string().min(1, {
         message: "Image is required.",
     }),
@@ -230,7 +230,7 @@ export const CharacterForm = ({
                                         <FormLabel>Description (required) </FormLabel>
                                         <Textarea 
                                             disabled={isLoading}
-                                            placeholder={"Description. For the best results, use between 100 and 300 words to describe this character. Anything significantly over 300 words may cause issues."}
+                                            placeholder={"Description. For the best results, try to use more than 200 and less than 3000 words to describe this character. Anything significantly over 3000 words may cause issues. Total word count (i.e. description + scenario + personality summary) ideally should not exceed 3000-4000 words."}
                                             {...field}
                                             className="resize-none"
                                             rows={7}

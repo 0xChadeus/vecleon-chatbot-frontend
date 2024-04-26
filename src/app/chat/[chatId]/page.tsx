@@ -13,7 +13,21 @@ import { MessageProps } from "@/components/message";
 import { NavBar } from "@/components/navbar";
 import RingLoader from "react-spinners/RingLoader"
 
-const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/test`);
+function makeid(length: number) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
+const chatSocketId = makeid(32);
+
+const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
