@@ -32,14 +32,14 @@ export const SideBar = () => {
                 </div>
                 <ChatList/>
             </div>
-            <li className="flex fixed bottom-2 left-2">
-                <div className='text-lg'>
+            <div className="flex absolute bottom-0 w-96 h-14 bg-black">
+                <div className='flex relative left-2 text-lg'>
                     ©  
                 </div>
-                <div className='px-2 py-1 text-xs'>
-                    Copyright Vecleon Pty Ltd. 2024
+                <div className='flex relative px-2 py-1 left-2 text-xs'>
+                    Copyright Vecleon Pty. Ltd. 2024
                 </div>
-            </li>
+            </div>
             </SheetContent>
         </Sheet>
     );
