@@ -1,14 +1,8 @@
 "use client";
-import Image from "next/image";
 const axios = require('axios');
-import fs from 'fs';
-import { CharacterForm } from "@/components/character-form";
 import { useRouter } from "next/navigation";
-import { NavBar } from "@/components/navbar";
-import { ListItem, ListItemProps } from "@/components/character-world-list-item";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { UserPlus, Pencil, CreditCard } from "lucide-react";
+import {CreditCard } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -77,7 +71,7 @@ const starterPack = [
   },
 ]
 
-const standardDesc = 'Bang-for-your-buck AI companions with a rich featureset'
+const standardDesc = 'Bang-for-your-buck AI companions, characters, and roleplay. Uncensored and unfiltered.'
 const standardPack = [
   {
     feature: "AI Companion Chat",
@@ -113,7 +107,7 @@ const standardPack = [
   },
   {
     feature: "Token Generation",
-    canAccess: "$0.02 per 100 tokens",
+    canAccess: "$0.006 per 1000 tokens",
   },
 ]
 
@@ -153,7 +147,7 @@ const unlimitedPack = [
   },
   {
     feature: "Token Generation",
-    canAccess: "$0.015 per 100 tokens",
+    canAccess: "$0.004 per 1000 tokens",
   },
 ]
 
