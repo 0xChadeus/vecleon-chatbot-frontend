@@ -25,7 +25,7 @@ function makeid(length: number) {
   return result;
 }
 
-const chatSocketId = makeid(32);
+let chatSocketId = makeid(32);
 
 const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
 const Chat = (
