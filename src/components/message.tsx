@@ -1,8 +1,7 @@
 "use client";
 import ReactMarkdown from 'react-markdown'
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
-const axios = require('axios');
+import {DeleteMessageDialog} from './delete-message-dialog'; 
 
 
 export interface MessageProps {
@@ -11,7 +10,7 @@ export interface MessageProps {
   src?: string;
   images?: string[];
   audio?: string;
-  mes_id?: string;
+  mes_id: string;
 }
 
 export const Message = ({
@@ -20,6 +19,7 @@ export const Message = ({
   src,
   images,
   audio,
+  mes_id,
 }: MessageProps) => {
   if(content === '') {
     return;
@@ -53,6 +53,7 @@ export const Message = ({
           </div>
             {audio? <audio controls src={audio}/> : <div/>}
           <ReactMarkdown>{content}</ReactMarkdown>
+            <DeleteMessageDialog id={mes_id}/>
         </div>
       </div>
     </div>

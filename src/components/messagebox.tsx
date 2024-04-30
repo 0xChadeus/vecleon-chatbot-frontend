@@ -44,6 +44,7 @@ export const MessageBox = ({
                 role={'ai'}
                 content={currentMes}
                 src={characterSrc}
+                mes_id={'currentMes'}
             /> 
             <AlwaysScrollToBottom/>
         </div>

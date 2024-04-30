@@ -1,11 +1,11 @@
 'use client'
 import Image from 'next/image'
 import { LandingNavbar } from '@/components/landing-navbar'
-import React, {useEffect, useRef} from 'react';    
+import React, {useRef} from 'react';    
 import {useScroll, motion, useTransform} from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import VecleonLogo from '@/components/logo';
 import Footer from '@/components/footer';
+import {Message} from '@/components/message';
 
 
 

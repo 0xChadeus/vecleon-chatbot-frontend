@@ -172,11 +172,14 @@ const Chat = (
       setCurrmes(currMes => currMes + data.message);
   
       if(data.msg_complete === 'true') {
+        rand_id = makeid(16);
+        console.log('current ai message id: ', rand_id);
         const aiMes: MessageProps = {
           role: 'ai',
           content: currMes,
           images: images,
           audio: audio,
+          mes_id: rand_id,
         }    
         setChathistory(chatHistory => chatHistory.concat(aiMes));
         const csrftoken = getCookie('csrftoken');
@@ -220,10 +223,12 @@ const Chat = (
 
     setIsLoading(true);
 
+    rand_id = makeid(16);
+    console.log('current user message id: ', rand_id);
     const userMes: MessageProps = {
       role: 'user',
       content: userinput,
-      mes_id: 'current_user_message'
+      mes_id: rand_id,
     };
 
     setContext(context => context.concat('\n' + 'User: ' + userinput));
