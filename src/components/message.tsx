@@ -11,6 +11,7 @@ export interface MessageProps {
   images?: string[];
   audio?: string;
   mes_id: string;
+  chat_id: string;
 }
 
 export const Message = ({
@@ -20,6 +21,7 @@ export const Message = ({
   images,
   audio,
   mes_id,
+  chat_id,
 }: MessageProps) => {
   if(content === '') {
     return;
@@ -53,7 +55,7 @@ export const Message = ({
           </div>
             {audio? <audio controls src={audio}/> : <div/>}
           <ReactMarkdown>{content}</ReactMarkdown>
-            <DeleteMessageDialog id={mes_id}/>
+            <DeleteMessageDialog id={mes_id} chatId={chat_id}/>
         </div>
       </div>
     </div>

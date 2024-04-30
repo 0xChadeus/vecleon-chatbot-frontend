@@ -16,11 +16,13 @@ const axios = require("axios");
 interface DeleteMessageDialogProps {
     id: string;
     src?: string;
+    chatId: string;
 }
 
 export const DeleteMessageDialog = ({
     id,
     src,
+    chatId,
 }: DeleteMessageDialogProps) => {
     function getCookie(name: any) {
         let cookieValue = null;
@@ -45,7 +47,8 @@ export const DeleteMessageDialog = ({
             withCredentials: true,
             method: "delete",
             data: {
-              id: id  
+              id: id,
+              chat_id: chatId,
             },
             url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_message/`,
             headers: {"X-CSRFToken": csrftoken},

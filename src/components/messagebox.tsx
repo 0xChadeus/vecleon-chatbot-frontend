@@ -9,6 +9,8 @@ interface MessageBoxProps {
     currentMes: string;
     characterSrc?: string;
     userSrc?: string;
+    currentMesId: string;
+    chatId: string;
 };
 
 export const MessageBox = ({
@@ -16,6 +18,8 @@ export const MessageBox = ({
     currentMes,
     characterSrc,
     userSrc,
+    currentMesId,
+    chatId,
 }: MessageBoxProps) => {
 
     const AlwaysScrollToBottom = () => {
@@ -38,13 +42,15 @@ export const MessageBox = ({
                     message.role === "user" && userSrc,
                     message.role === "ai" && characterSrc)} 
                     images={message.images}
+                    chat_id={chatId}
                 />
             ))}
             <Message
                 role={'ai'}
                 content={currentMes}
                 src={characterSrc}
-                mes_id={'currentMes'}
+                mes_id={currentMesId}
+                chat_id={chatId}
             /> 
             <AlwaysScrollToBottom/>
         </div>

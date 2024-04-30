@@ -35,6 +35,7 @@ const Chat = (
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [currMes, setCurrmes] = useState<string>('');
+  const [currMesId, setCurrMesId] = useState<string>('');
   const [userinput, setUserinput] = useState<string>('');
   const [chatHistory, setChathistory] = useState<MessageProps[]>([]);
   const [context, setContext] = useState<string>('');
@@ -114,6 +115,7 @@ const Chat = (
               images: message[2].replace(/[\[\]']+/g, '').split(','),
               audio: message[3],
               mes_id: message[4],
+              chat_id: params.chatId,
             }
             setContext(context => context.concat('\n' + message[1]));
             return mes;
@@ -173,6 +175,7 @@ const Chat = (
   
       if(data.msg_complete === 'true') {
         let rand_id = makeid(16);
+        setCurrMesId(rand_id);
         console.log('current ai message id: ', rand_id);
         const aiMes: MessageProps = {
           role: 'ai',
@@ -189,6 +192,7 @@ const Chat = (
           role: 'ai',
           images: images,
           audio: audio,
+          mes_id: rand_id,
         }
         axios({
           withCredentials: true,
@@ -290,6 +294,8 @@ const Chat = (
         currentMes={currMes}
         characterSrc={character.src}
         userSrc={'/profile_placeholder.png'}
+        currentMesId={currMesId}
+        chatId={params.chatId}
       />
 
       <div className="fixed xl:left-1/4 sm:left-0 
