@@ -265,6 +265,7 @@ const Chat = (
       role: 'user',
       images: images,
       audio: audio,
+      mes_id: rand_id,
     }
 
     const csrftoken = getCookie('csrftoken');
