@@ -172,7 +172,7 @@ const Chat = (
       setCurrmes(currMes => currMes + data.message);
   
       if(data.msg_complete === 'true') {
-        rand_id = makeid(16);
+        let rand_id = makeid(16);
         console.log('current ai message id: ', rand_id);
         const aiMes: MessageProps = {
           role: 'ai',
@@ -223,7 +223,7 @@ const Chat = (
 
     setIsLoading(true);
 
-    rand_id = makeid(16);
+    let rand_id = makeid(16);
     console.log('current user message id: ', rand_id);
     const userMes: MessageProps = {
       role: 'user',
