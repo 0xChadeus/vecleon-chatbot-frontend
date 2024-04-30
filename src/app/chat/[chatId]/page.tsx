@@ -183,6 +183,7 @@ const Chat = (
           images: images,
           audio: audio,
           mes_id: rand_id,
+          chat_id: params.chatId,
         }    
         setChathistory(chatHistory => chatHistory.concat(aiMes));
         const csrftoken = getCookie('csrftoken');
@@ -233,6 +234,7 @@ const Chat = (
       role: 'user',
       content: userinput,
       mes_id: rand_id,
+      chat_id: params.chatId,
     };
 
     setContext(context => context.concat('\n' + 'User: ' + userinput));
