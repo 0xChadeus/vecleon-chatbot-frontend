@@ -55,7 +55,9 @@ export const Message = ({
           </div>
             {audio? <audio controls src={audio}/> : <div/>}
           <ReactMarkdown>{content}</ReactMarkdown>
+          <div className="pt-4">
             <DeleteMessageDialog id={mes_id} chatId={chat_id}/>
+          </div>
         </div>
       </div>
     </div>
