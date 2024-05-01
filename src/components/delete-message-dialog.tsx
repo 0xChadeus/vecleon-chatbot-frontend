@@ -62,8 +62,8 @@ export const DeleteMessageDialog = ({
     <CSRFToken/>
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline" className="bg-white text-black absolute right-2">
-              <Trash2></Trash2>
+        <Button variant="outline" className="flex relative w-4">
+              <Trash2 className="flex absolute left-1"></Trash2>
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="">
