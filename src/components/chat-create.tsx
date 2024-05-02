@@ -29,7 +29,6 @@ import {
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import {BsPlusCircle} from 'react-icons/bs'
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
@@ -40,6 +39,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import { Check, ChevronsUpDown, MessageSquarePlusIcon } from "lucide-react";
 import classNames from "classnames";
 import { CSRFToken } from "./csrftoken";
+import {ImageUpload} from "./image-upload";
 
 const chatFormSchema = z.object({
   name: z.string().min(1, {

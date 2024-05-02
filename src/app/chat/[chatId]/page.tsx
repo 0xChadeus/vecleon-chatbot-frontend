@@ -55,6 +55,7 @@ const Chat = (
   const [audio, setAudio] = useState<string>('');
 
   const [userName, setUserName] = useState<string>('');
+  const [userSrc, setUserSrc] = useState<string>('');
 
   const router = useRouter();
 
@@ -108,8 +109,6 @@ const Chat = (
         },
         headers: {"X-CSRFToken": csrftoken},
       }).then((response: any) => {
-          setUserName(response.data.user_name);
-          console.log('user name: ', userName);
           const msgHistory = response.data.msg_history.map((message: any) => {
             const mes: MessageProps = {
               role: message[0],
@@ -124,6 +123,8 @@ const Chat = (
           });
           setChathistory(msgHistory);
           setCharacter(response.data.character_key);
+          setUserName(response.data.user_name);
+          console.log('user name: ', response.data.user_name);
       });  
   }, []);
 
