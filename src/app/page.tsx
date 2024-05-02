@@ -6,6 +6,7 @@ import {useScroll, motion, useTransform} from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/footer';
 import {Message} from '@/components/message';
+import { ChatCreate } from '@/components/chat-create';
 
 
 

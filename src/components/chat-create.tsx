@@ -43,12 +43,15 @@ import { CSRFToken } from "./csrftoken";
 
 const chatFormSchema = z.object({
   name: z.string().min(1, {
-      message: "Name is required.",
+      message: "Name is required.", //(name of chat)
   }).max(200, 
       {message: "Name must not be more than 200 characters"}),
   character_id: z.string().min(1, {
       message: "Character is required.",
   }).max(500),
+  user_name: z.string().min(1, {
+      message: "User name is required.",
+  }).max(250),
 });
 
 interface ChatCreateProps {
@@ -85,6 +88,7 @@ export const ChatCreate = ({
       defaultValues: {
           name: "",
           character_id: characterId? characterId: "",
+          user_name: "", 
       }
     });
 
@@ -141,6 +145,24 @@ export const ChatCreate = ({
                   <FormItem className="w-full">
                     <Input 
                     id="name" 
+                    value={field.value} 
+                    onChange={field.onChange} 
+                    className="w-60" 
+                    />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                User Name (your persona)
+              </Label>
+              <FormField 
+              name="user_name"
+              render={({field}) => (
+                  <FormItem className="w-full">
+                    <Input 
+                    id="user_name" 
                     value={field.value} 
                     onChange={field.onChange} 
                     className="w-60" 

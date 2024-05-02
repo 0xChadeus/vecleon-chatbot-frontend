@@ -1,10 +1,8 @@
 'use client';
 import "../../globals.css";
-import Image from "next/image";
-import { useState, useEffect, CSSProperties } from "react";
+import { useState, useEffect } from "react";
 const axios = require('axios');
 import { useRouter } from 'next/navigation'
-var classNames = require('classnames');
 import {CSRFToken} from '@/components/csrftoken'
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import TextareaAutosize from 'react-textarea-autosize';
@@ -55,6 +53,8 @@ const Chat = (
 
   const [images, setImages] = useState<string[]>([]);
   const [audio, setAudio] = useState<string>('');
+
+  const [userName, setUserName] = useState<string>('');
 
   const router = useRouter();
 
@@ -108,6 +108,8 @@ const Chat = (
         },
         headers: {"X-CSRFToken": csrftoken},
       }).then((response: any) => {
+          setUserName(response.data.user_name);
+          console.log('user name: ', userName);
           const msgHistory = response.data.msg_history.map((message: any) => {
             const mes: MessageProps = {
               role: message[0],
