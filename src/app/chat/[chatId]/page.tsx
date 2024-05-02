@@ -126,6 +126,7 @@ const Chat = (
           setUserName(response.data.user_name);
           setUserSrc(response.data.user_img);
           console.log('user name: ', response.data.user_name);
+          console.log(response.data)
       });  
   }, []);
 
