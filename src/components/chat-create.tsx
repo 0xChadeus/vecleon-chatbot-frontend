@@ -46,12 +46,12 @@ const chatFormSchema = z.object({
       message: "Name is required.", //(name of chat)
   }).max(200, 
       {message: "Name must not be more than 200 characters"}),
-  character_id: z.string().min(1, {
-      message: "Character is required.",
-  }).max(500),
   user_name: z.string().min(1, {
       message: "User name is required.",
   }).max(250),
+  character_id: z.string().min(1, {
+      message: "Character is required.",
+  }).max(500),
 });
 
 interface ChatCreateProps {
@@ -87,8 +87,8 @@ export const ChatCreate = ({
       resolver: zodResolver(chatFormSchema),
       defaultValues: {
           name: "",
-          character_id: characterId? characterId: "",
           user_name: "", 
+          character_id: characterId? characterId: "",
       }
     });
 

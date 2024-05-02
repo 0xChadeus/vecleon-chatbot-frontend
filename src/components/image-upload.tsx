@@ -1,9 +1,7 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import { ImageIcon, X } from "lucide-react";
 import Cropper from 'react-easy-crop'
 import {
   AlertDialog,
