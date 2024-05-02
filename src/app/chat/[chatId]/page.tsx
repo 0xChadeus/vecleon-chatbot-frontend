@@ -124,6 +124,7 @@ const Chat = (
           setChathistory(msgHistory);
           setCharacter(response.data.character_key);
           setUserName(response.data.user_name);
+          setUserSrc(response.data.user_img);
           console.log('user name: ', response.data.user_name);
       });  
   }, []);
@@ -135,28 +136,28 @@ const Chat = (
     .then((r) => r.text())
     .then(text  => {
       const sysprompt = text.replaceAll('{{char}}', character.name);
-      setSystemPrompt(sysprompt.replaceAll('{{user}}', 'User'));
+      setSystemPrompt(sysprompt.replaceAll('{{user}}', userName));
     })    
 
     fetch('/prefill.txt')
     .then((r) => r.text())
     .then(text  => {
       const prefill_text = text.replaceAll('{{char}}', character.name);
-      setPrefill(prefill_text.replaceAll('{{user}}', 'User'));
+      setPrefill(prefill_text.replaceAll('{{user}}', userName));
     })    
 
     fetch('/nsfw.txt') 
     .then((r) => r.text())
     .then(text  => {
       const nsfw_text = text.replaceAll('{{char}}', character.name);
-      setNsfw(nsfw_text.replaceAll('{{user}}', 'User'));
+      setNsfw(nsfw_text.replaceAll('{{user}}', userName));
     })
 
     fetch('/extra.txt')
     .then((r) => r.text())
     .then(text  => {
       const extra_text = text.replaceAll('{{char}}', character.name);
-      setExtra(extra_text.replaceAll('{{user}}', 'User'));
+      setExtra(extra_text.replaceAll('{{user}}', userName));
     })
 
   }, [character]);
@@ -240,7 +241,7 @@ const Chat = (
       chat_id: params.chatId,
     };
 
-    setContext(context => context.concat('\n' + 'User: ' + userinput));
+    setContext(context => context.concat('\n' + userName + ': ' + userinput));
 
     setChathistory(chatHistory => chatHistory.concat(userMes));
 
@@ -251,7 +252,7 @@ const Chat = (
                     character.scenario,
                     '',
                     context, 
-                    'User: ' + userinput,
+                    userName + ': ' + userinput,
                     'complete the next message for ' + character.name,
                     character.name + ': ',
                     prefill,
@@ -299,7 +300,7 @@ const Chat = (
         messages={chatHistory}
         currentMes={currMes}
         characterSrc={character.src}
-        userSrc={'/profile_placeholder.png'}
+        userSrc={userSrc}
         currentMesId={currMesId}
         chatId={params.chatId}
       />

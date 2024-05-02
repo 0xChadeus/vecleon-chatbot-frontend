@@ -14,7 +14,7 @@ import { Wand2 } from "lucide-react";
 import { CSRFToken } from "./csrftoken";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import crypto, { randomBytes } from "crypto"
+import { randomBytes } from "crypto"
 
 
 interface CharacterFormProps {
@@ -127,7 +127,7 @@ export const CharacterForm = ({
             const imageUploadUrl = await fetch('/api/aws/', {
                 method: 'POST',
                 body: JSON.stringify({
-                    imageName: 'images/' + imageName + '.png',
+                    imageName: 'images/characters/' + imageName + '.png',
                 })
             }).then(res => res.json());
 

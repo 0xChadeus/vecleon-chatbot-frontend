@@ -12,7 +12,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import {Form, FormField, FormItem, 
-  FormControl,} from "@/components/ui/form";
+  FormControl, FormMessage} from "@/components/ui/form";
 import {
     Command,
     CommandEmpty,
@@ -29,6 +29,7 @@ import {
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
@@ -41,6 +42,9 @@ import classNames from "classnames";
 import { CSRFToken } from "./csrftoken";
 import {ImageUpload} from "./image-upload";
 
+
+import { randomBytes } from "crypto"
+
 const chatFormSchema = z.object({
   name: z.string().min(1, {
       message: "Name is required.", //(name of chat)
@@ -49,6 +53,9 @@ const chatFormSchema = z.object({
   user_name: z.string().min(1, {
       message: "User name is required.",
   }).max(250),
+  user_img: z.string().min(1, {
+      message: "User name is required.",
+  }).max(500),
   character_id: z.string().min(1, {
       message: "Character is required.",
   }).max(500),
@@ -65,6 +72,7 @@ export const ChatCreate = ({
   characterName,
 }:ChatCreateProps) => {
 
+    const {toast} = useToast();
     const [characterList, setCharacterlist] = useState<ListItemProps[]>([]);
 
     function getCookie(name: any) {
@@ -88,6 +96,7 @@ export const ChatCreate = ({
       defaultValues: {
           name: "",
           user_name: "", 
+          user_img: "",
           character_id: characterId? characterId: "",
       }
     });
@@ -102,8 +111,42 @@ export const ChatCreate = ({
       });
     }, []);
 
+    const maxFileSize = Number(process.env.NEXT_PUBLIC_IMAGE_FILE_LIMIT);
+
     const chatSubmit = async (e: any) => {
       const csrftoken = getCookie('csrftoken');
+        const imgSrc = chatForm.getValues().user_img;
+        console.log("src here: " + imgSrc);
+        if(!imgSrc.includes("amazonaws")) {
+            const rawBytes = await randomBytes(16);
+            const imageName = rawBytes.toString('hex');
+            let imgFile = await fetch(imgSrc).then(r => r.blob()).then(
+                blobFile => new File([blobFile], imageName, 
+                    { type: "image/png" }));
+            if(imgFile.size >= maxFileSize) {
+                console.log('file size > 2MB');
+                toast({
+                    description: "File size must be less than 3MB"
+                })    
+                return
+            }
+            const imageUploadUrl = await fetch('/api/aws/', {
+                method: 'POST',
+                body: JSON.stringify({
+                    imageName: 'images/users/' + imageName + '.png',
+                })
+            }).then(res => res.json());
+
+            await fetch(imageUploadUrl.url,{
+                method:'PUT',
+                headers: {
+                    "Content-Type": "image/png"
+                },
+                body: imgFile,
+            });
+            const finalImageUrl = imageUploadUrl.url.split('?')[0];
+            chatForm.setValue("user_img", finalImageUrl);    
+        }
       await axios({
         withCredentials: true,
         method: "post",
@@ -130,7 +173,7 @@ export const ChatCreate = ({
           <AlertDialogHeader>
             <AlertDialogTitle>Create a new chat</AlertDialogTitle>
             <AlertDialogDescription>
-              Make a new chat with any of your existing characters.
+              Make a new chat with any of your existing characters, and add your persona name and avatar.
               Click &quot;Create Chat&quot; when you&lsquo;re done.
             </AlertDialogDescription>
           </AlertDialogHeader>
@@ -170,6 +213,27 @@ export const ChatCreate = ({
                   </FormItem>
                 )}
               />
+            </div>
+            <div className="text-center items-center space-y-4">
+              <Label htmlFor="name" className="text-right">
+                User Image (your avatar)
+              </Label>
+                <FormField
+                name="user_img"
+                render={({field}) => (
+                    <FormItem className="flex flex-col items-center
+                    justify-center space-y-4">
+                        <FormControl>
+                            <ImageUpload
+                                onChange={field.onChange}
+                                value={field.value}
+                                defaultSrc={null}
+                            />
+                        </FormControl>
+                        <FormMessage/>
+                    </FormItem>
+                )}
+                />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="username" className="text-right">
