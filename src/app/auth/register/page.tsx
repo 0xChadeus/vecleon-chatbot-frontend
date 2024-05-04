@@ -52,6 +52,7 @@ export default function Page() {
   }, []);
 
   const handleSubmit = (event: any) => {    
+    console.log(captcha);
     if (captcha === null) {
       console.log('captcha not checked');
       setErrorText('Please complete the captcha');
