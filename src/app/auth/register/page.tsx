@@ -1,8 +1,6 @@
 'use client';
-import Image from "next/image";
 import { useEffect, useState } from "react";
 const axios = require('axios');
-import fs from 'fs';
 import {CSRFToken} from '@/components/csrftoken'
 import { useRouter } from 'next/navigation'
 import {Button, Form, InputGroup} from "react-bootstrap";
@@ -18,6 +16,7 @@ export default function Page() {
   const [passwordConfirm, setPasswordconfirm] = useState('');
   const [showPassword, setShowpassword] = useState<boolean>(false);
   const [captcha, setCaptcha] = useState<string | null>();
+  const [errorText, setErrorText] = useState<string>('');
   const router = useRouter()
 
   const emailFormat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -53,11 +52,17 @@ export default function Page() {
   }, []);
 
   const handleSubmit = (event: any) => {    
+    if (captcha === null) {
+      console.log('captcha not checked');
+      setErrorText('Please complete the captcha');
+      return;
+    }
     const csrftoken = getCookie('csrftoken');
 
     event.preventDefault();
     if(!(email && email.match(emailFormat))){
       console.log('invalid email format');
+      setErrorText('Invalid email format');
       return;
     }
     console.log("email: " + email);
@@ -66,6 +71,7 @@ export default function Page() {
 
     if (password !== passwordConfirm) {
       console.error('passwords do not match');
+      setErrorText('Passwords do not match');
       return;
     }
     const data = {
@@ -83,13 +89,12 @@ export default function Page() {
       .then(function (response: any) {
         router.push("./login/");
     });  
-    
   }
+
   return (
     // We pass the event to the handleSubmit() function on submit.
     <>
       <LandingNavbar/>
-
       <form onSubmit={handleSubmit}>
         <CSRFToken/>
         <div className="p-12 max-w-sm mx-auto bg-black rounded-2xl shadow-2xl
@@ -118,6 +123,9 @@ export default function Page() {
             {!showPassword ? <FaEyeSlash size={20} 
             className="text-white"/> : 
             <FaEye size={20} className="text-white" />}
+          <div className="text-red-500">
+            {errorText}
+          </div>  
           </Button>
           <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}`} onChange={setCaptcha}/>
           <button type="submit" className="text-left block rounded py-2 
