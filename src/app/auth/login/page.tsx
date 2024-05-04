@@ -14,6 +14,7 @@ export default function Page() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowpassword] = useState<boolean>(false);
   const [captcha, setCaptcha] = useState<string | null>();
+  const [errorText, setErrorText] = useState<string>('');
   const router = useRouter()
 
   function getCookie(name: string) {
@@ -66,6 +67,7 @@ export default function Page() {
         } else {
           console.log('error');
           console.log(response);
+          setErrorText(response.data['error']);
         }
     });  
   }
@@ -96,6 +98,7 @@ export default function Page() {
             className="text-white"/> : 
             <FaEye size={20} className="text-white" />}
           </Button>
+          <div className="text-red-500">{errorText}</div>
           {/* <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}`} onChange={setCaptcha}/> */}
           <button type="submit" className="text-left block rounded py-2 
             px-4 bg-slate-200 hover:bg-white text-black" id="password_confirm">Log In</button>
