@@ -15,7 +15,7 @@ export default function Page() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordconfirm] = useState('');
   const [showPassword, setShowpassword] = useState<boolean>(false);
-  const [captcha, setCaptcha] = useState<string | null>();
+  const [captcha, setCaptcha] = useState<string>('');
   const [errorText, setErrorText] = useState<string>('');
   const router = useRouter()
 
@@ -54,7 +54,7 @@ export default function Page() {
 
   const handleSubmit = (event: any) => {    
     console.log('captcha2: ', captcha);
-    if (captcha === null) {
+    if (captcha === '') {
       console.log('captcha not checked');
       setErrorText('Please complete the captcha');
       return;
@@ -67,9 +67,6 @@ export default function Page() {
       setErrorText('Invalid email format');
       return;
     }
-    console.log("email: " + email);
-    console.log(password);
-    console.log(passwordConfirm);
 
     if (password !== passwordConfirm) {
       console.error('passwords do not match');
