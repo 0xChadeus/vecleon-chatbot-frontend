@@ -15,7 +15,7 @@ export default function Page() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordconfirm] = useState('');
   const [showPassword, setShowpassword] = useState<boolean>(false);
-  const [captcha, setCaptcha] = useState<string>('');
+  const [captcha, setCaptcha] = useState<string | null>();
   const [errorText, setErrorText] = useState<string>('');
   const router = useRouter()
 
@@ -54,7 +54,7 @@ export default function Page() {
 
   const handleSubmit = (event: any) => {    
     console.log('captcha2: ', captcha);
-    if (captcha === '') {
+    if (captcha === undefined) {
       console.log('captcha not checked');
       setErrorText('Please complete the captcha');
       return;
