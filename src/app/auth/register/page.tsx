@@ -49,10 +49,11 @@ export default function Page() {
           console.log(response.data);
         }
     });  
+    console.log('captcha1: ', captcha);
   }, []);
 
   const handleSubmit = (event: any) => {    
-    console.log(captcha);
+    console.log('captcha2: ', captcha);
     if (captcha === null) {
       console.log('captcha not checked');
       setErrorText('Please complete the captcha');
