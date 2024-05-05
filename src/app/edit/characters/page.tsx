@@ -1,14 +1,11 @@
 "use client";
-import Image from "next/image";
 const axios = require('axios');
-import fs from 'fs';
-import { CharacterForm } from "@/components/character-form";
 import { useRouter } from "next/navigation";
 import { NavBar } from "@/components/navbar";
 import { ListItem, ListItemProps } from "@/components/character-world-list-item";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { UserPlus, Pencil } from "lucide-react";
+import { UserPlus } from "lucide-react";
 
 
 const CharacterListPage = ({}) => {
@@ -62,7 +59,7 @@ const CharacterListPage = ({}) => {
         <div className="flex flex-col fixed xl:left-1/4 \
         sm:left-0 xl:w-1/2 w-full top-20 bottom-10  
         border rounded-md border-slate-700 overflow-scroll bg-slate-950">
-          <div className="fixed xl:w-1/2 sm:w-full h-20 bg-slate-950 z-50 rounded-sm">
+          <div className="flex fixed sm:w-full h-20 bg-slate-950 z-50 rounded-sm border-slate-700">
           <a href="https://vecleon.com/edit/characters/new">
             <Button className="absolute left-6 top-6 rounded-xl">
               <UserPlus/>
@@ -86,7 +83,6 @@ const CharacterListPage = ({}) => {
 
       </>
     );
-  
 }
 
 export default CharacterListPage

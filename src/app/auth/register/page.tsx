@@ -76,6 +76,7 @@ export default function Page() {
     const data = {
       email: email,
       password: password,
+      captcha: captcha,
     }
 
     axios({
@@ -88,7 +89,7 @@ export default function Page() {
       .then(function (response: any) {
           console.log(response.data);
           if(response.data.error) {
-            setErrorText('User already exists');
+            setErrorText('User already exists. Please sign in, or use a different email.');
             return;
           } else {
             router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`);
