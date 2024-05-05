@@ -87,6 +87,12 @@ export default function Page() {
     })
       .then(function (response: any) {
           console.log(response.data);
+          if(response.data.error) {
+            setErrorText('User already exists');
+            return;
+          } else {
+            router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`);
+          }
     });  
   }
 
