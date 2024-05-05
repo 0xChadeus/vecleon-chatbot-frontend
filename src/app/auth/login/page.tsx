@@ -48,8 +48,8 @@ export default function Page() {
   }, []);
 
   const handleSubmit = (event: any) => {    
-    const csrftoken = getCookie('csrftoken');  
     event.preventDefault();
+    const csrftoken = getCookie('csrftoken');  
 
     const data = {
       email: email,

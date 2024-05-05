@@ -49,17 +49,17 @@ export default function Page() {
           console.log(response.data);
         }
     });  
-    console.log('captcha1: ', captcha);
   }, []);
 
   const handleSubmit = (event: any) => {    
-    console.log('captcha2: ', captcha);
+    event.preventDefault();
+    const csrftoken = getCookie('csrftoken');
+
     if (captcha === undefined) {
       console.log('captcha not checked');
       setErrorText('Please complete the captcha');
       return;
     }
-    const csrftoken = getCookie('csrftoken');
 
     event.preventDefault();
     if(!(email && email.match(emailFormat))){
