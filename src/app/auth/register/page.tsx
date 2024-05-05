@@ -86,7 +86,7 @@ export default function Page() {
       headers: {"X-CSRFToken": csrftoken},
     })
       .then(function (response: any) {
-        router.push("./login/");
+          console.log(response.data);
     });  
   }
 
