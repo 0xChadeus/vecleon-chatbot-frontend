@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const axios = require('axios');
 import {CSRFToken} from '@/components/csrftoken'
 import { useRouter } from 'next/navigation'
-import {Button, Form, InputGroup} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import {FaEye, FaEyeSlash} from "react-icons/fa";
 import { LandingNavbar } from "@/components/landing-navbar";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -129,10 +129,10 @@ export default function Page() {
             {!showPassword ? <FaEyeSlash size={20} 
             className="text-white"/> : 
             <FaEye size={20} className="text-white" />}
+          </Button>
           <div className="text-red-500">
             {errorText}
           </div>  
-          </Button>
           <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}`} onChange={setCaptcha}/>
           <button type="submit" className="text-left block rounded py-2 
             px-4 bg-white hover:bg-cyan-200 text-black" id="password_confirm">Sign Up</button>

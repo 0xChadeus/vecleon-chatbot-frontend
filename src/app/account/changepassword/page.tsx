@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import {FaEye, FaEyeSlash} from "react-icons/fa";
 
 const ChangePassword = ({}) => {
 
@@ -23,6 +24,8 @@ const ChangePassword = ({}) => {
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [errorText, setErrorText] = useState('');
   const [successText, setSuccessText] = useState('');
+  const[showCurrentPassword, setShowcurrentPassword] = useState<boolean>(false);
+  const [showNewPassword, setNewShowpassword] = useState<boolean>(false);
 
   const router = useRouter();
   useEffect(() => {
@@ -80,7 +83,7 @@ const ChangePassword = ({}) => {
     <>
       <NavBar/>
       <div className="flex xl:flex-col flex-row">
-        <Card className="w-[350px] fixed left-1/3 top-1/3">
+        <Card className="w-[350px] fixed left-1/3 top-1/4">
           <CardHeader>
             <CardTitle>Change your password</CardTitle>
           </CardHeader>
@@ -89,13 +92,25 @@ const ChangePassword = ({}) => {
               <div className="grid w-full items-center gap-4">
                 <Label>Your email address</Label>
                 <Label id="name"> {userEmail} </Label>
-                <div className="flex flex-col space-y-1.5">
+                <div className="flex flex-col space-y-1.5 text-center">
                   <Label>Current Password</Label>
-                  <Input id="password" onChange={(e) => setCurrentPassword(e.target.value)}/>
+                  <Input type={showCurrentPassword ? "text": "password"} id="password" onChange={(e) => setCurrentPassword(e.target.value)}/>
+                  <Button variant={"outline"} type={'button'} onClick={() => setShowcurrentPassword(!showCurrentPassword)}
+                  className="p-2">
+                    {!showCurrentPassword ? <FaEyeSlash size={20} 
+                    className="text-white"/> : 
+                    <FaEye size={20} className="text-white" />}
+                  </Button>
                   <Label>New Password</Label>
-                  <Input id="password" onChange={(e) => setNewPassword(e.target.value)}/>
+                  <Input type={showNewPassword ? "text": "password"} id="newPassword" onChange={(e) => setNewPassword(e.target.value)}/>
                   <Label>Confirm New Password</Label>
-                  <Input id="password" onChange={(e) => setConfirmNewPassword(e.target.value)}/>
+                  <Input type={showNewPassword ? "text": "password"} id="newPasswordConfirm" onChange={(e) => setConfirmNewPassword(e.target.value)}/>
+                  <Button variant={"outline"} type={'button'} onClick={() => setNewShowpassword(!showNewPassword)}
+                  className="p-2 ">
+                    {!showNewPassword ? <FaEyeSlash size={20} 
+                    className="text-white"/> : 
+                    <FaEye size={20} className="text-white" />}
+                  </Button>
                   <p className="text-red-500">{errorText}</p>
                   <p className="text-green-500">{successText}</p>
                 </div>
