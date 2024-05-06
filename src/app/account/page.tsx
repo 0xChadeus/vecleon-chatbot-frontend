@@ -95,7 +95,7 @@ const AccountPage = ({}) => {
     <>
       <NavBar/>
       <div className="flex xl:flex-col flex-row">
-        <Card className="w-[350px] fixed lg:left-76 xl:left-1/4 md:top-1/4 left-1/4 top-24">
+        <Card className="w-[350px] fixed left-6 top-24 md:left-1/3 md:top-1/3">
           <CardHeader>
             <CardTitle>Account Information</CardTitle>
             <CardDescription>Check your account information</CardDescription>
@@ -115,12 +115,12 @@ const AccountPage = ({}) => {
             </form>
           </CardContent>
           <CardFooter className="flex justify-between">
-            <a href={`${process.env.NEXT_PUBLIC_MIDSERVER_URL}/account/change_password/`}>
+            <a href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/account/change_password/`}>
             <Button>Change Password</Button>
             </a>
           </CardFooter>
         </Card>
-      <div className="fixed lg:left-1/2 xl:top-72 top-2/3 right-24">
+      <div className="fixed left-1/3 top-2/3 lg:top-1/3 lg:left-2/3">
         <div className="space-y-1">
           <h4 className="text-sm font-medium leading-none">Subscription</h4>
           <p className="text-sm text-muted-foreground">

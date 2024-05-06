@@ -61,14 +61,14 @@ const ChangePassword = ({}) => {
           new_password: newPassword,
           confirm_new_password: confirmNewPassword
         },
-        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/change_password/`,
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/change_user_password/`,
         headers: {"X-CSRFToken": csrftoken},
     }).then(function ( response: any) {
         console.log(response);
         if (response.data.error) {
           setErrorText(response.data.error);
         } else {
-          router.push(`${process.env.NEXT_PUBLIC_MIDSERVER_URL}/account/`);
+          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/account/`);
         }
     });
   }
