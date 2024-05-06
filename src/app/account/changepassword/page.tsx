@@ -22,6 +22,7 @@ const ChangePassword = ({}) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [errorText, setErrorText] = useState('');
+  const [successText, setSuccessText] = useState('');
 
   const router = useRouter();
   useEffect(() => {
@@ -68,7 +69,9 @@ const ChangePassword = ({}) => {
         if (response.data.error) {
           setErrorText(response.data.error);
         } else {
-          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/account/`);
+          setSuccessText(response.data.success);
+          setErrorText('');
+          //router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/account/`);
         }
     });
   }
@@ -94,6 +97,7 @@ const ChangePassword = ({}) => {
                   <Label>Confirm New Password</Label>
                   <Input id="password" onChange={(e) => setConfirmNewPassword(e.target.value)}/>
                   <p className="text-red-500">{errorText}</p>
+                  <p className="text-green-500">{successText}</p>
                 </div>
               </div>
             </form>

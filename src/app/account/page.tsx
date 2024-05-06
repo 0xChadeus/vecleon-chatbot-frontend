@@ -115,7 +115,7 @@ const AccountPage = ({}) => {
             </form>
           </CardContent>
           <CardFooter className="flex justify-between">
-            <a href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/account/change_password/`}>
+            <a href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/account/changepassword/`}>
             <Button>Change Password</Button>
             </a>
           </CardFooter>
