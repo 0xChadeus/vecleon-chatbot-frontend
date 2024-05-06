@@ -56,7 +56,7 @@ const ChangePassword = ({}) => {
     const csrftoken = getCookie('csrftoken');
     axios({
         withCredentials: true,
-        method: "put",
+        method: "post",
         data: {
           current_password: currentPassword,
           new_password: newPassword,
