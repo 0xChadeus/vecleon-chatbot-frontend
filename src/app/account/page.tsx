@@ -1,13 +1,9 @@
 "use client";
-import Image from "next/image";
 const axios = require('axios');
-import fs from 'fs';
-import { CharacterForm } from "@/components/character-form";
 import { useRouter } from "next/navigation";
 import { NavBar } from "@/components/navbar";
-import { ListItem, ListItemProps } from "@/components/character-world-list-item";
 import { useEffect, useState } from "react";
-import { UserPlus, Pencil, CreditCardIcon } from "lucide-react";
+import { CreditCardIcon } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
@@ -21,14 +17,6 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { CancelDialog } from "@/components/cancel-subscription-dialog";
 
 const AccountPage = ({}) => {
 
@@ -36,7 +24,6 @@ const AccountPage = ({}) => {
   const [subscriptionStatus, setSubscriptionStatus] = useState(false);
   const [subscriptionCancelled, setSubscriptionCancelled] = useState(false);
   const [currentPeriodEnd, setCurrentPeriodEnd] = useState('');
-  const [currentPlan, setCurrentPlan] = useState('');
 
   const router = useRouter();
   useEffect(() => {
@@ -81,7 +68,6 @@ const AccountPage = ({}) => {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the  name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -129,7 +115,9 @@ const AccountPage = ({}) => {
             </form>
           </CardContent>
           <CardFooter className="flex justify-between">
+            <a href={`${process.env.NEXT_PUBLIC_MIDSERVER_URL}/account/change_password/`}>
             <Button>Change Password</Button>
+            </a>
           </CardFooter>
         </Card>
       <div className="fixed lg:left-1/2 xl:top-72 top-2/3 right-24">
