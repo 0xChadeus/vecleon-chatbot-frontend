@@ -10,6 +10,23 @@ import {useRouter} from 'next/navigation';
 
 const SupportPage = ({}) => {
   const router = useRouter();
+
+  function getCookie(name: string) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+
   useEffect(() => {
     axios({
       withCredentials: true,
@@ -25,11 +42,13 @@ const SupportPage = ({}) => {
 
   const handleSubmit = (event: any) => {    
     event.preventDefault();
+    const csrftoken = getCookie('csrftoken');  
 
     axios({
       withCredentials: true,
       method: 'post',
       url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/test_email/`,
+      headers: {"X-CSRFToken": csrftoken},
     }).then(function ( response: any) {
         console.log(response);
     });  
