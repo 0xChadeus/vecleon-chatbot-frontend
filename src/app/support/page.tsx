@@ -23,6 +23,17 @@ const SupportPage = ({}) => {
     });  
   }, []);
 
+  const handleSubmit = (event: any) => {    
+    event.preventDefault();
+
+    axios({
+      withCredentials: true,
+      method: 'post',
+      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/test_email/`,
+    }).then(function ( response: any) {
+        console.log(response);
+    });  
+  }
 
   return (
     <>
@@ -38,7 +49,7 @@ const SupportPage = ({}) => {
         <div className="flex h-5 items-center space-x-4 text-sm">
           <div> support@vecleon.com </div>
           <Separator orientation="vertical" />
-          <Button>Reveal Email Address</Button>
+          <Button onClick={handleSubmit}>Reveal Email Address</Button>
         </div>
       </div>
     </>
