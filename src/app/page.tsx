@@ -27,7 +27,8 @@ export default function Home() {
       <LandingNavbar/>
       <motion.h1 style={{y:titleScroll}}  className="flex absolute top-1/4 md:left-1/2 sm:left-10 left-10 md:text-7xl sm:text-6xl text-5xl font-mono font-extrabold drop-shadow-[0_3px_3px_rgba(0,0,0,0.99)]" >AI PRODUCTS THAT ELEVATE YOUR LIFE</motion.h1>  
       <motion.div className="flex relative shrink-0 bg-img" style={{y:bgScroll}}>
-        <Image src={'/background4.jpg'} alt={''} fill={true} objectFit="cover"/>
+        <Image src={'/background4.jpg'} alt={''} fill={true} style={{objectFit:"cover"}}
+/>
       </motion.div>
 
       <motion.div className="bg-grey h-1/2 sm:h-96 sm:h-dvh" style={{y:infoScroll}}>

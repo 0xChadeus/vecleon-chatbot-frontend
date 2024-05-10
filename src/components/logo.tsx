@@ -3,7 +3,7 @@ import React from "react";
 
 export default function VecleonLogo() {
   return (
-    <svg className="svgIcon-use" width="65" height="65" viewBox="0 0 1080 1080" enable-background="new 0 0 1080 1080">
+    <svg className="svgIcon-use" width="65" height="65" viewBox="0 0 1080 1080">
       <g fill="none" fillRule="evenodd">
       <path fill="" opacity="1.000000" stroke="none" 
 	d="

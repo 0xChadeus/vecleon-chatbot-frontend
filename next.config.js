@@ -18,12 +18,6 @@ const nextConfig = {  webpack: config => {
     return config;
   },
 
-  images: {
-    domains: [
-      process.env.NEXT_PUBLIC_IMAGE_DOMAIN
-    ]
-  },
-
   async headers() {
     return [
       {
