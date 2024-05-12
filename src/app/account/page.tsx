@@ -30,7 +30,7 @@ const AccountPage = ({}) => {
     axios({
       withCredentials: true,
       method: 'get',
-      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_user_email`,
+      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_user_email/`,
     }).then(function ( response: any) {
         setUserEmail(response.data.email);
       }
@@ -86,7 +86,6 @@ const AccountPage = ({}) => {
         url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_customer_portal/`,
         headers: {"X-CSRFToken": csrftoken},
     }).then(function ( response: any) {
-        console.log(response);
         router.push(response.data.url);
     });
   }
