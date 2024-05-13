@@ -94,7 +94,7 @@ const AccountPage = ({}) => {
     <>
       <NavBar/>
       <div className="flex xl:flex-col flex-row">
-        <Card className="w-[350px] fixed left-6 top-24 md:left-1/3 md:top-1/3">
+        <Card className="w-[350px] fixed left-6 top-24 md:left-1/4 md:top-1/3">
           <CardHeader>
             <CardTitle>Account Information</CardTitle>
             <CardDescription>Check your account information</CardDescription>
@@ -119,7 +119,7 @@ const AccountPage = ({}) => {
             </a>
           </CardFooter>
         </Card>
-      <div className="fixed left-1/3 top-2/3 lg:top-1/3 lg:left-2/3">
+      <div className="fixed left-1/3 top-2/3 lg:top-1/3 lg:left-2/3 ">
         <div className="space-y-1">
           <h4 className="text-sm font-medium leading-none">Subscription</h4>
           <p className="text-sm text-muted-foreground">

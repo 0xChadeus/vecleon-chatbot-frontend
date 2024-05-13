@@ -51,6 +51,12 @@ export default function Page() {
     event.preventDefault();
     const csrftoken = getCookie('csrftoken');  
 
+    if (captcha === undefined) {
+      console.log('captcha not checked');
+      setErrorText('Please complete the captcha');
+      return;
+    }
+
     const data = {
       email: email,
       password: password,
@@ -63,11 +69,11 @@ export default function Page() {
       headers: {"X-CSRFToken": csrftoken},
     }).then(function ( response: any) {
         if(response.data['success'] === 'login success') {
-          router.push("../../edit/characters");
+          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/edit/characters`);
         } else {
           console.log('error');
           console.log(response);
-          setErrorText(response.data['error']);
+          setErrorText(response.data['Invalid credentials']);
         }
     });  
   }
@@ -98,8 +104,10 @@ export default function Page() {
             className="text-white"/> : 
             <FaEye size={20} className="text-white" />}
           </Button>
-          <div className="text-red-500">{errorText}</div>
-          {/* <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}`} onChange={setCaptcha}/> */}
+          <div className="text-red-500">
+            {errorText}
+          </div>
+          <ReCAPTCHA sitekey={`${process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}`} onChange={setCaptcha}/>
           <button type="submit" className="text-left block rounded py-2 
             px-4 bg-slate-200 hover:bg-white text-black" id="password_confirm">Log In</button>
           <a className="hover:text-white text-slate-300" href="register">Don&apos;t have an account? Sign Up.</a>
