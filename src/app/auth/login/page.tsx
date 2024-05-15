@@ -74,6 +74,7 @@ export default function Page() {
           console.log('error');
           console.log(response);
           setErrorText(response.data['Invalid credentials']);
+          return;
         }
     });  
   }
