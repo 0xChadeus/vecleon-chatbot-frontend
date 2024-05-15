@@ -32,7 +32,7 @@ const ChangePassword = ({}) => {
     axios({
       withCredentials: true,
       method: 'get',
-      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_user_email`,
+      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_user_email/`,
     }).then(function ( response: any) {
         setUserEmail(response.data.email);
       }

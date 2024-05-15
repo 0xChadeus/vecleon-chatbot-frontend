@@ -40,14 +40,14 @@ const AccountPage = ({}) => {
       method: 'get',
       url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription/`,
     }).then(function ( response: any) {
-        console.log(response);
+        //console.log(response);
         if(response.data.response == "not_subscribed") {
           setSubscriptionStatus(false);
         } else {
           setSubscriptionStatus(true);
           setSubscriptionCancelled(response.data.cancelled)
   
-          console.log(response.data.subscription);
+          //console.log(response.data.subscription);
           var a = new Date(response.data.subscription.current_period_end * 1000);
           var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
           var year = a.getFullYear();
