@@ -56,7 +56,7 @@ export const ChatListItem = ({
           withCredentials: true,
           method: "delete",
           data: {
-            id: id  
+            chat_id: id  
           },
           url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_chat/`,
           headers: {"X-CSRFToken": csrftoken},
@@ -64,9 +64,6 @@ export const ChatListItem = ({
       window.location.reload();
   }
 
-  if(name === '') {
-    return;
-  }
   return(
     <div className={"group flex w-full \
         bg-black rounded-lg my-0.5 \
