@@ -137,7 +137,7 @@ export const CharacterForm = ({
             const imageUploadUrl = await fetch('/api/aws/', {
                 method: 'POST',
                 body: JSON.stringify({
-                    imageName: 'images/characters/' + userEmail + '/' + imageName + '.png',
+                    imageName: 'images/' + userEmail + '/characters/' + imageName + '.png',
                 })
             }).then(res => res.json());
 

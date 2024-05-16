@@ -74,6 +74,7 @@ export const ChatCreate = ({
 
     const {toast} = useToast();
     const [characterList, setCharacterlist] = useState<ListItemProps[]>([]);
+    const [userEmail, setUserEmail] = useState('');
 
     function getCookie(name: any) {
       let cookieValue = null;
@@ -109,6 +110,14 @@ export const ChatCreate = ({
       }).then(function ( response: any) {
           setCharacterlist(response.data);
       });
+        axios({
+          withCredentials: true,
+          method: 'get',
+          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_user_email/`,
+        }).then(function ( response: any) {
+            setUserEmail(response.data.email);
+          }
+        );
     }, []);
 
     const maxFileSize = Number(process.env.NEXT_PUBLIC_IMAGE_FILE_LIMIT);
@@ -133,7 +142,7 @@ export const ChatCreate = ({
             const imageUploadUrl = await fetch('/api/aws/', {
                 method: 'POST',
                 body: JSON.stringify({
-                    imageName: 'images/users/' + imageName + '.png',
+                    imageName: 'images/' + userEmail + '/profile_pics/' + imageName + '.png',
                 })
             }).then(res => res.json());
 
