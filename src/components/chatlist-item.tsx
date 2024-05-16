@@ -1,6 +1,4 @@
 "use client";
-import ReactMarkdown from 'react-markdown'
-import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { Button } from './ui/button';
 import {
@@ -15,6 +13,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Trash2 } from 'lucide-react';
+import { useState, useEffect } from "react";
 const axios = require("axios");
 
 export interface ChatListItemProps {
@@ -31,8 +30,11 @@ export const ChatListItem = ({
   src
 }: ChatListItemProps) => {
   const router = useRouter();
+
+  const [userSrc, setUserSrc] = useState<string>(''); 
+
   const handleClick = (event: any) => {
-    router.push(`${process.env.NEXT_PUBLIC_SELF_URL}/chat/${id}`)
+    router.push(`${process.env.NEXT_PUBLIC_SELF_URL}/chat/${id}/`)
   }
   function getCookie(name: any) {
     let cookieValue = null;
@@ -52,6 +54,27 @@ export const ChatListItem = ({
 
   const deleteChat = async (event: any) => {
       const csrftoken = getCookie('csrftoken');
+      axios({
+        withCredentials: true,
+        method: 'put',
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_chat/`,
+        data: {
+          chat_id: id
+        },
+        headers: {"X-CSRFToken": csrftoken},
+      }).then((response: any) => {
+          setUserSrc(response.user_img);
+      });  
+        console.log('src: ' + src);
+        const urlParts = userSrc.split('/');
+        const imageName = urlParts.pop();
+        const folder = urlParts.pop() + '/' + urlParts.pop() + '/' + urlParts.pop();
+        const s3Item = folder + '/' + imageName
+        console.log('meme: ' + s3Item);
+        const deleteResponse = await fetch('/api/aws/', 
+                                        { method:'DELETE', 
+                                        body: JSON.stringify({ imageName: s3Item }) 
+                                        });
       await axios({
           withCredentials: true,
           method: "delete",
@@ -61,7 +84,7 @@ export const ChatListItem = ({
           url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_chat/`,
           headers: {"X-CSRFToken": csrftoken},
       })
-      window.location.reload();
+      router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/edit/characters/`)
   }
 
   return(
