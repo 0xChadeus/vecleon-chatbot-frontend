@@ -72,6 +72,7 @@ export const ChatListItem = ({
         folder = urlParts.pop() + '/' + folder;
         folder = urlParts.pop() + '/' + folder;
         const s3Item = folder + '/' + imageName
+        console.log('FOLDER: ' + folder);
         console.log('meme: ' + s3Item);
         const deleteResponse = await fetch('/api/aws/', 
                                         { method:'DELETE', 
