@@ -68,7 +68,9 @@ export const ChatListItem = ({
         console.log('src: ' + userSrc);
         const urlParts = userSrc.split('/');
         const imageName = urlParts.pop();
-        const folder = urlParts.pop() + '/' + urlParts.pop() + '/' + urlParts.pop();
+        let folder = urlParts.pop();
+        folder = urlParts.pop() + '/' + folder;
+        folder = urlParts.pop() + '/' + folder;
         const s3Item = folder + '/' + imageName
         console.log('FOLDER: ' + folder);
         console.log('meme: ' + s3Item);
