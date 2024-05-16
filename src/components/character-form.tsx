@@ -63,7 +63,7 @@ export const CharacterForm = ({
             const csrftoken = getCookie('csrftoken');
             axios({
             withCredentials: true,
-            method: 'get',
+            method: 'put',
             url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_character/`,
             data: {
                 id: characterId
@@ -230,7 +230,7 @@ export const CharacterForm = ({
                                         <FormLabel>Description (required) </FormLabel>
                                         <Textarea 
                                             disabled={isLoading}
-                                            placeholder={"Description. For the best results, try to use more than 200 and less than 3000 words to describe this character. Anything significantly over 3000 words may cause issues. Total word count (i.e. description + scenario + personality summary) ideally should not exceed 3000-4000 words."}
+                                            placeholder={"Description. For the best results, try to use more than 200 and less than 3000 words to describe this character. Anything significantly over 3000 words may cause issues. Total word count (i.e. description + scenario + personality summary) ideally should not exceed 3000-4000 words. Note that underage characters are not allowed."}
                                             {...field}
                                             className="resize-none"
                                             rows={7}
