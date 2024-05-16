@@ -54,7 +54,7 @@ export const ChatListItem = ({
 
   const deleteChat = async (event: any) => {
       const csrftoken = getCookie('csrftoken');
-      axios({
+      await axios({
         withCredentials: true,
         method: 'put',
         url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_chat/`,
@@ -65,7 +65,7 @@ export const ChatListItem = ({
       }).then((response: any) => {
           setUserSrc(response.user_img);
       });  
-        console.log('src: ' + src);
+        console.log('src: ' + userSrc);
         const urlParts = userSrc.split('/');
         const imageName = urlParts.pop();
         let folder = urlParts.pop();
