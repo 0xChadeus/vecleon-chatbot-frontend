@@ -54,30 +54,30 @@ export const ChatListItem = ({
 
   const deleteChat = async (event: any) => {
       const csrftoken = getCookie('csrftoken');
-      await axios({
-        withCredentials: true,
-        method: 'put',
-        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_chat/`,
-        data: {
-          chat_id: id
-        },
-        headers: {"X-CSRFToken": csrftoken},
-      }).then((response: any) => {
-          setUserSrc(response.data.user_img);
-      });  
-        console.log('src: ' + userSrc);
-        const urlParts = userSrc.split('/');
-        const imageName = urlParts.pop();
-        let folder = urlParts.pop();
-        folder = urlParts.pop() + '/' + folder;
-        folder = urlParts.pop() + '/' + folder;
-        const s3Item = folder + '/' + imageName
-        console.log('FOLDER: ' + folder);
-        console.log('meme: ' + s3Item);
-        const deleteResponse = await fetch('/api/aws/', 
-                                        { method:'DELETE', 
-                                        body: JSON.stringify({ imageName: s3Item }) 
-                                        });
+      //await axios({
+      //  withCredentials: true,
+      //  method: 'put',
+      //  url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_chat/`,
+      //  data: {
+      //    chat_id: id
+      //  },
+      //  headers: {"X-CSRFToken": csrftoken},
+      //}).then((response: any) => {
+      //    setUserSrc(response.data.user_img);
+      //});  
+      //  console.log('src: ' + userSrc);
+      //  const urlParts = userSrc.split('/');
+      //  const imageName = urlParts.pop();
+      //  let folder = urlParts.pop();
+      //  folder = urlParts.pop() + '/' + folder;
+      //  folder = urlParts.pop() + '/' + folder;
+      //  const s3Item = folder + '/' + imageName
+      //  console.log('FOLDER: ' + folder);
+      //  console.log('meme: ' + s3Item);
+      //  const deleteResponse = await fetch('/api/aws/', 
+      //                                  { method:'DELETE', 
+      //                                  body: JSON.stringify({ imageName: s3Item }) 
+      //                                  });
       await axios({
           withCredentials: true,
           method: "delete",

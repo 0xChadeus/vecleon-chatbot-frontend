@@ -44,18 +44,19 @@ export const DeleteDialog = ({
     const deleteCharacter = async (event: any) => {
         const csrftoken = getCookie('csrftoken');
 
-        console.log('src: ' + src);
-        const urlParts = src.split('/');
-        const imageName = urlParts.pop();
-        let folder = urlParts.pop();
-        folder = urlParts.pop() + '/' + folder;
-        folder = '/' + urlParts.pop() + '/' + folder;
-        const s3Item = folder + '/' + imageName
-        console.log('meme: ' + s3Item);
-        const deleteResponse = await fetch('/api/aws/', 
-                                        { method:'DELETE', 
-                                        body: JSON.stringify({ imageName: s3Item }) 
-                                        });
+        // doesn't work lol
+        //console.log('src: ' + src);
+        //const urlParts = src.split('/');
+        //const imageName = urlParts.pop();
+        //let folder = urlParts.pop();
+        //folder = urlParts.pop() + '/' + folder;
+        //folder = '/' + urlParts.pop() + '/' + folder;
+        //const s3Item = folder + '/' + imageName
+        //console.log('meme: ' + s3Item);
+        //const deleteResponse = await fetch('/api/aws/', 
+        //                                { method:'DELETE', 
+        //                                body: JSON.stringify({ imageName: s3Item }) 
+        //                                });
 
         await axios({
             withCredentials: true,
@@ -66,7 +67,7 @@ export const DeleteDialog = ({
             url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_character/`,
             headers: {"X-CSRFToken": csrftoken},
         })
-        //window.location.reload();
+        window.location.reload();
     }
 
   
