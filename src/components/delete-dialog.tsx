@@ -47,9 +47,9 @@ export const DeleteDialog = ({
         console.log('src: ' + src);
         const urlParts = src.split('/');
         const imageName = urlParts.pop();
-        let folder = '/' + urlParts.pop();
+        let folder = urlParts.pop();
         folder = urlParts.pop() + '/' + folder;
-        folder = urlParts.pop() + '/' + folder;
+        folder = '/' + urlParts.pop() + '/' + folder;
         const s3Item = folder + '/' + imageName
         console.log('meme: ' + s3Item);
         const deleteResponse = await fetch('/api/aws/', 
