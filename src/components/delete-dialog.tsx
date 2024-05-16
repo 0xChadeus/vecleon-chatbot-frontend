@@ -59,7 +59,7 @@ export const DeleteDialog = ({
             withCredentials: true,
             method: "delete",
             data: {
-              id: id  
+              chat_id: id  
             },
             url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_character/`,
             headers: {"X-CSRFToken": csrftoken},
