@@ -55,6 +55,7 @@ export const CharacterForm = ({
         personality_summary: '',
         scenario: '',
     });  
+    const [userEmail, setUserEmail] = useState('');
 
     const maxFileSize = Number(process.env.NEXT_PUBLIC_IMAGE_FILE_LIMIT);
 
@@ -74,6 +75,15 @@ export const CharacterForm = ({
                 characterForm.reset({...response.data});
             });
         }
+
+        axios({
+          withCredentials: true,
+          method: 'get',
+          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_user_email/`,
+        }).then(function ( response: any) {
+            setUserEmail(response.data.email);
+          }
+        );
     }, []);
   
     const characterForm = useForm<z.infer<typeof characterFormSchema>>({
@@ -127,7 +137,7 @@ export const CharacterForm = ({
             const imageUploadUrl = await fetch('/api/aws/', {
                 method: 'POST',
                 body: JSON.stringify({
-                    imageName: 'images/characters/' + imageName + '.png',
+                    imageName: 'images/characters/' + userEmail + '/' + imageName + '.png',
                 })
             }).then(res => res.json());
 
