@@ -63,7 +63,7 @@ export const ChatListItem = ({
         },
         headers: {"X-CSRFToken": csrftoken},
       }).then((response: any) => {
-          setUserSrc(response.user_img);
+          setUserSrc(response.data.user_img);
       });  
         console.log('src: ' + userSrc);
         const urlParts = userSrc.split('/');
