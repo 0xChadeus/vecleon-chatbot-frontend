@@ -34,7 +34,7 @@ export const ChatListItem = ({
   const [userSrc, setUserSrc] = useState<string>(''); 
 
   const handleClick = (event: any) => {
-    router.push(`${process.env.NEXT_PUBLIC_SELF_URL}/chat/${id}/`)
+    router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/chat/${id}/`)
   }
   function getCookie(name: any) {
     let cookieValue = null;
@@ -53,6 +53,7 @@ export const ChatListItem = ({
   }    
 
   const deleteChat = async (event: any) => {
+      event.preventDefault();
       const csrftoken = getCookie('csrftoken');
       //await axios({
       //  withCredentials: true,
@@ -87,6 +88,7 @@ export const ChatListItem = ({
           url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/delete_chat/`,
           headers: {"X-CSRFToken": csrftoken},
       })
+      window.location.reload();
       router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/edit/characters/`)
   }
 
