@@ -71,9 +71,7 @@ export default function Page() {
         if(response.data['success'] === 'login success') {
           router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/edit/characters`);
         } else {
-          console.log('error');
-          console.log(response);
-          setErrorText(response.data['Invalid credentials']);
+          setErrorText('Invalid credentials');
           return;
         }
     });  
