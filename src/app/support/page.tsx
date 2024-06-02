@@ -1,7 +1,9 @@
 "use client";
 const axios = require('axios');
 import { NavBar } from "@/components/navbar";
-import { useEffect } from "react";
+import { LandingNavbar } from "@/components/landing-navbar";
+
+import { useEffect, useState} from "react";
 
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
@@ -10,6 +12,8 @@ import {useRouter} from 'next/navigation';
 
 const SupportPage = ({}) => {
   const router = useRouter();
+
+  const [userAuthenticated, setUserAuthenticated] = useState(false);
 
   function getCookie(name: string) {
     let cookieValue = null;
@@ -35,7 +39,7 @@ const SupportPage = ({}) => {
     }).then(function ( response: any) {
         if(response.data[0] === 'is_authenticated: true') {
         } else {
-          router.push(`${process.env.NEXT_PUBLIC_MIDSERVER_URL}/auth/login/`);
+          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login/`);
         }
     });  
   }, []);
