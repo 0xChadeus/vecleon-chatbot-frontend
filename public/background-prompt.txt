@@ -1,1 +1,4 @@
 score_9, score_8_up, score_7_up, score_6_up, score_5_up, score_4_up, BREAK source_anime,1girl,  22 years old, clothed, blonde, yellow eyes, v,  by nilsunna, looking at viewer, happy, laughing, curvy, night sky, cinematic shot, ((Galaxy, Lens flare)), Wallpaper, blue light behind her,  flower field, night, (Blue color schema), detailed background, (a city in the distance:1.2), 
+
+
+score_9, score_8_up, score_7_up, score_6_up, score_5_up, score_4_up, BREAK source_anime, night sky, cinematic shot, ((Galaxy, Lens flare)), Wallpaper, blue light,  flower field, night, (Blue color schema), detailed background, (a city in the distance:1.1), 

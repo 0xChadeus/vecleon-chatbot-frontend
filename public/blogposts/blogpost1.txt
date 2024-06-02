@@ -1,7 +1,7 @@
 The Future of Artificial Intelligence: Opportunities and Challenges
 Author: John Doe
 Date: 2023-05-22
-Image: /background2.png
+Image: /background2.jpg
 
 Artificial Intelligence (AI) has been a topic of fascination and speculation for decades. As technology continues to advance at a rapid pace, the potential applications and implications of AI are becoming increasingly apparent. In this blog post, we'll explore the future of AI, its opportunities, and the challenges we may face along the way.
 
