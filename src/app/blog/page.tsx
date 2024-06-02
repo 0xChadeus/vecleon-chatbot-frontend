@@ -87,7 +87,7 @@ const Blog = () => {
           <h1 className="relative flex left-0 text-3xl font-sans top-20 font-extrabold">BLOG</h1>
             <div className="relative flex top-32 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {blogPosts.map((post) => (
-                <Link key={post.id} href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${post.id}`}>
+                <Link key={post.id} href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/blog/${post.id}`}>
                   <Card className="cursor-pointer">
                     <CardHeader>
                       <Image
