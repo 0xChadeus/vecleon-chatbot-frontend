@@ -3,10 +3,49 @@ These Terms of Use ("Terms") govern your use of the AI chatbot service ("Service
 
     Description of Service: The Service provided by the Provider consists of an AI-powered chatbot designed to assist users with various inquiries and tasks.
 
-    User Conduct:
-    a. You agree to use the Service only for lawful purposes and in a manner consistent with these Terms and any applicable laws and regulations.
-    b. You shall not use the Service in any way that may cause harm to the Provider, other users, or any third party.
-    c. You shall not use the Service to engage in any malicious activities, including but not limited to hacking, phishing, or distributing malware.
+     User Conduct. In addition to agreeing to comply with our Community Guidelines, which are incorporated herein, you agree to comply with the following conditions in using Service.
+
+    You are solely responsible for all Content you submit to Service. (When we say “Content you submit” and similar terms, we mean anything you seek to post, transmit, or share, including but not limited to text, images, sounds, video, graphics, information, or other data.) Your use of Service may be subject to license and use restrictions set forth in the CreativeML Open RAIL-M License. You agree not to submit any Content that:
+
+        (i) infringes any intellectual property or other proprietary rights of any party;
+        (ii) you do not have a right to submit;
+        (iii) contains software viruses or any computer code, files or programs designed to interrupt, destroy or limit the functionality of any computer software or hardware or telecommunications equipment;
+        (iv) poses a privacy or security risk to any person;
+        (v) constitutes unsolicited or unauthorized advertising, promotional materials, commercial activities and/or sales, “junk mail,” “spam,” “chain letters,” “pyramid schemes,” “contests,” “sweepstakes,” or any other form of solicitation;
+        (vi) is threatening, abusive, harassing, tortious, bullying, or excessively violent;
+        (vii) is defamatory, libelous, or verifiably false with the purpose of harming others;
+        (viii) constitutes hate speech that demeans or promotes discrimination or violence on the basis of race, ethnicity, gender, religion, age, or other social, physical or mental characteristics;
+        (ix) is obscene or pornographic;
+        (x) constitutes sexual harassment;
+        (xi) constitutes sexual exploitation or abuse of a minor, including sharing child sexual exploitation or abuse imagery or content, grooming, or sexual extortion;
+        (xii) glorifies self-harm, including self-injury, suicide, or eating disorders;
+        (xiii) promotes terrorism or violent extremism;
+        (xiv) furthers or promotes criminal activity;
+        (xv) seeks to buy or sell illegal drugs;
+        (xvi) facilitates fully automated decision making that adversely impacts a person’s legal rights or creates a binding, enforceable obligation;
+        (xvii) seeks to provide medical, legal, financial or tax advice;
+        (xviii) interferes with or disrupts Service or servers or networks connected to Service,
+        (xix) interferes with or appropriates any person’s right of publicity by using their name, likeness or persona (a) without permission and (b) outside a permissible context such as non-commercial parody or public commentary; or
+        (xx) in the sole judgment of Vecleon, is objectionable or that restricts or inhibits any other person from using or enjoying Service, or which may expose Vecleon or its users to any harm or liability.
+
+    You likewise agree not to do any of the following in connection with your use of Service:
+
+        (i) disobey any requirements, procedures, policies or regulations of networks connected to Service;
+        (ii) violate any applicable law or regulation;
+        (iii) impersonate any person or entity, or misrepresent your affiliation with a person or entity;
+        (iv) solicit personal information from anyone under the age of 18;
+        (v) harvest or collect email addresses or other contact information of other users from Service by electronic or other means for the purposes of sending unsolicited emails or other unsolicited communications;
+        (vi) obtain or attempt to obtain any information through any means not intentionally made available or provided for through Service;
+        (vii) lease, lend, sell or sublicense any part of Service;
+        (viii) try to evade any technological measure designed to protect Service or any technology associated with Service; or
+        (ix) reverse engineer, disassemble, decompile, decode, adapt, or otherwise attempt to derive or gain access to any Services source code, in whole or in part (unless a portion of code within Service is released as open source and the open source license governing such code expressly permits reverse engineering, copying or other modification).
+
+    To the extent Vecleon chooses to support voice or audio features, you agree not to do any of the following in connection with your use of Service:
+
+        (i) submit voice recordings of third parties (including but not limited to celebrities) without their consent;
+        (ii) use any Vecleon voice feature to engage in “deepfakes” or impersonation of any kind, including but not limited to those that create political misinformation, perpetrate frauds or scams, impugn the reputation of third parties, or otherwise amount to harmful conduct.
+
+    We reserve the right to investigate and take appropriate action against anyone who we conclude, in our sole discretion, has violated the provisions above. That action may include, without limitation, removing Content from Service, suspending or terminating your account, and reporting you to law enforcement.   c. You shall not use the Service to engage in any malicious activities, including but not limited to hacking, phishing, or distributing malware.
 
     Accuracy and Reliability:
     a. While the Provider strives to ensure the accuracy and reliability of the Service, we do not guarantee that the information provided by the chatbot is always accurate, complete, or up-to-date.

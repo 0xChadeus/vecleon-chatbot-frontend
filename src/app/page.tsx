@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
       <LandingNavbar/>
-      <motion.h1 style={{y:titleScroll}}  className="flex absolute top-1/4 md:left-1/2 sm:left-10 left-10 md:text-7xl sm:text-6xl text-5xl font-mono font-extrabold drop-shadow-[0_3px_3px_rgba(0,0,0,0.99)]" >TALK TO ANYONE YOU WANT, IN ANY WORLD YOU WANT.</motion.h1>  
+      <motion.h1 style={{y:titleScroll}}  className="flex absolute top-1/4 md:left-1/2 sm:left-10 left-10 md:text-7xl sm:text-6xl text-5xl font-mono font-extrabold drop-shadow-[0_3px_3px_rgba(0,0,0,0.99)]" >TALK TO ANY CHARACTER YOU WANT, IN ANY WORLD YOU WANT.</motion.h1>  
       <motion.div className="flex relative shrink-0 bg-img" style={{y:bgScroll}}>
         <Image src={'/background5.jpg'} alt={''} fill={true} style={{objectFit:"cover"}}
 />

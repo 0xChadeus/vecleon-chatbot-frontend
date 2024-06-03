@@ -24,6 +24,7 @@ export default function Footer() {
           <a className="absolute flex top-0" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/partners`}>Enterprise</a>
           <a className="absolute flex top-10" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/support`}>Support</a>
           <a className="absolute flex top-20" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/blog`}>Blog</a>
+          <a className="absolute flex left-60" href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/terms`}>Terms</a>
         </div>
         <div className='absolute flex bottom-2 px-2 py-1 text-xs right-8'>
           &copy; Copyright Vecleon 2024
