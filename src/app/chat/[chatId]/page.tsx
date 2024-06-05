@@ -23,12 +23,13 @@ function makeid(length: number) {
   return result;
 }
 
-let chatSocketId = makeid(32);
 
-const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
+//const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
+
+  const [chatSocket, setChatSocket] = useState<WebSocket | null>(null);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -94,6 +95,9 @@ const Chat = (
           router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/subscriptions`);
         }
     });
+    let chatSocketId = makeid(32);
+    const newSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
+    setChatSocket(newSocket);
 }, [])
   
 
@@ -165,15 +169,15 @@ const Chat = (
 
 
   useEffect(() => {
-    chatSocket.onclose = () => {
+    chatSocket!.onclose = () => {
       console.log('Chat socket closed');
     };  
       
-    chatSocket.onopen = () => {
+    chatSocket!.onopen = () => {
       console.log('Chat socket opened');
     };  
 
-    chatSocket.onmessage = function(e) {
+    chatSocket!.onmessage = function(e) {
       const data = JSON.parse(e.data);
       console.log(data);
       setCurrmes(currMes => currMes + data.message);
