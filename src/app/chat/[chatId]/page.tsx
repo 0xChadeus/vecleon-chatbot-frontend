@@ -264,7 +264,7 @@ const Chat = (
                     nsfw,
                     params.chatId,];
 
-    chatSocket.send(JSON.stringify({
+    chatSocket!.send(JSON.stringify({
       'message': message
     }));
 
