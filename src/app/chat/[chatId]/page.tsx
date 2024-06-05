@@ -1,6 +1,6 @@
 'use client';
 import "../../globals.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef} from "react";
 const axios = require('axios');
 import { useRouter } from 'next/navigation'
 import {CSRFToken} from '@/components/csrftoken'
@@ -31,6 +31,9 @@ const Chat = (
 ) => {
 
   const [chatSocket, setChatSocket] = useState<WebSocket>(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
+  const [isConnected, setIsConnected] = useState<boolean>(false);  
+  const retryCount = useRef(0);
+
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -96,9 +99,6 @@ const Chat = (
           router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/subscriptions`);
         }
     });
-    //let chatSocketId = makeid(32);
-    //const newSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
-    //setChatSocket(newSocket);
 }, [])
   
 
@@ -162,14 +162,25 @@ const Chat = (
   }, [character]);
 
 
-  useEffect(() => {
-    chatSocket!.onclose = () => {
-      console.log('Chat socket closed');
-    };  
-      
+  useEffect(() => {    
+    const connectWebSocket = () => {
+      const ws = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
+      setChatSocket(ws);
+    };
+
     chatSocket!.onopen = () => {
       console.log('Chat socket opened');
+      setIsConnected(true);
     };  
+
+    chatSocket!.onclose = () => {
+      console.log('Chat socket closed');
+
+      if (retryCount.current < 5) {
+        retryCount.current += 1;
+        connectWebSocket();
+        }
+      };  
 
     chatSocket!.onmessage = function(e) {
       const data = JSON.parse(e.data);
