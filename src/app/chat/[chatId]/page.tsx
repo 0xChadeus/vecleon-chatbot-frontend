@@ -24,12 +24,13 @@ function makeid(length: number) {
 }
 
 
+const chatSocketId = makeid(32);
 //const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
 
-  const [chatSocket, setChatSocket] = useState<WebSocket | null>(null);
+  const [chatSocket, setChatSocket] = useState<WebSocket>(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -95,9 +96,9 @@ const Chat = (
           router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/subscriptions`);
         }
     });
-    let chatSocketId = makeid(32);
-    const newSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
-    setChatSocket(newSocket);
+    //let chatSocketId = makeid(32);
+    //const newSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
+    //setChatSocket(newSocket);
 }, [])
   
 
