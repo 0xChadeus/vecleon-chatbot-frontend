@@ -158,13 +158,6 @@ const Chat = (
       setNsfw(nsfw_text.replaceAll('{{user}}', userName));
     })
 
-    fetch('/extra.txt')
-    .then((r) => r.text())
-    .then(text  => {
-      const extra_text = text.replaceAll('{{char}}', character.name);
-      setExtra(extra_text.replaceAll('{{user}}', userName));
-    })
-
   }, [character]);
 
 
