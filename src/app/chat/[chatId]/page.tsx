@@ -10,6 +10,7 @@ import {MessageBox} from "@/components/messagebox";
 import { MessageProps } from "@/components/message";
 import { NavBar } from "@/components/navbar";
 import RingLoader from "react-spinners/RingLoader"
+import useWebSocket from '@/components/use-websocket';
 
 function makeid(length: number) {
   let result = '';
@@ -31,9 +32,6 @@ const Chat = (
 ) => {
 
   const [chatSocket, setChatSocket] = useState<WebSocket>(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
-  const [isConnected, setIsConnected] = useState<boolean>(false);  
-  const retryCount = useRef(0);
-
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -130,8 +128,6 @@ const Chat = (
           setCharacter(response.data.character_key);
           setUserName(response.data.user_name);
           setUserSrc(response.data.user_img);
-          console.log('user name: ', response.data.user_name);
-          console.log(response.data)
       });  
   }, []);
 
@@ -163,34 +159,27 @@ const Chat = (
 
 
   useEffect(() => {    
-    const connectWebSocket = () => {
-      const ws = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
-      setChatSocket(ws);
-    };
-
     chatSocket!.onopen = () => {
       console.log('Chat socket opened');
-      setIsConnected(true);
     };  
 
     chatSocket!.onclose = () => {
       console.log('Chat socket closed');
+    };  
 
-      if (retryCount.current < 5) {
-        retryCount.current += 1;
-        connectWebSocket();
-        }
-      };  
+    chatSocket!.onerror = () => {
+      console.log('Chat socket error');
+      chatSocket.close();
+      window.location.reload();
+    };  
 
     chatSocket!.onmessage = function(e) {
       const data = JSON.parse(e.data);
-      console.log(data);
       setCurrmes(currMes => currMes + data.message);
   
       if(data.msg_complete === 'true') {
         let rand_id = makeid(16);
         setCurrMesId(rand_id);
-        console.log('current ai message id: ', rand_id);
         const aiMes: MessageProps = {
           role: 'ai',
           content: currMes,
@@ -223,12 +212,10 @@ const Chat = (
       }
 
       if(data.is_image) {
-        console.log(data.image);
         setImages(images => [...images, data.image]);
       }
 
       if(data.is_audio) {
-        console.log(data.audio);
         setAudio(data.audio);
       }
     }
@@ -243,7 +230,6 @@ const Chat = (
     setIsLoading(true);
 
     let rand_id = makeid(16);
-    console.log('current user message id: ', rand_id);
     const userMes: MessageProps = {
       role: 'user',
       content: userinput,
