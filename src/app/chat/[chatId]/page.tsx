@@ -10,7 +10,6 @@ import {MessageBox} from "@/components/messagebox";
 import { MessageProps } from "@/components/message";
 import { NavBar } from "@/components/navbar";
 import RingLoader from "react-spinners/RingLoader"
-import useWebSocket from '@/components/use-websocket';
 
 function makeid(length: number) {
   let result = '';
