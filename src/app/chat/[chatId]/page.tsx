@@ -24,8 +24,7 @@ function makeid(length: number) {
 }
 
 
-const chatSocketId = makeid(32);
-//const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
+const chatSocketId = 'test';
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
@@ -51,7 +50,6 @@ const Chat = (
   const [systemPrompt, setSystemPrompt] = useState('');
   const [prefill, setPrefill] = useState('');
   const [nsfw, setNsfw] = useState('');
-  const [extra, setExtra] = useState('');
 
   const [images, setImages] = useState<string[]>([]);
   const [audio, setAudio] = useState<string>('');
