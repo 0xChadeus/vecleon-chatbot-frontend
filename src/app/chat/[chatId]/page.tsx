@@ -1,6 +1,6 @@
 'use client';
 import "../../globals.css";
-import { useState, useEffect, useRef} from "react";
+import { useState, useEffect} from "react";
 const axios = require('axios');
 import { useRouter } from 'next/navigation'
 import {CSRFToken} from '@/components/csrftoken'
@@ -24,12 +24,12 @@ function makeid(length: number) {
 }
 
 
-const chatSocketId = 'test';
+const chatSocketId = makeid(32);
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
 
-  const [chatSocket, setChatSocket] = useState<WebSocket>(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
+  const [chatSocket, setChatSocket] = useState<WebSocket>();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -156,6 +156,13 @@ const Chat = (
 
 
   useEffect(() => {    
+    try {
+      setChatSocket(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
+    } catch (error) {
+      console.log(error);
+      window.location.reload();
+    }
+    
     chatSocket!.onopen = () => {
       console.log('Chat socket opened');
     };  
@@ -166,7 +173,7 @@ const Chat = (
 
     chatSocket!.onerror = () => {
       console.log('Chat socket error');
-      chatSocket.close();
+      chatSocket!.close();
       window.location.reload();
     };  
 
