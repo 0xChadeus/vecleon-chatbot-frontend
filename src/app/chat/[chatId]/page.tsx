@@ -24,12 +24,11 @@ function makeid(length: number) {
 }
 
 
-const chatSocketId = makeid(32);
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
 
-  const [chatSocket, setChatSocket] = useState<WebSocket>();
+  const [chatSocket, setChatSocket] = useState<WebSocket | null>(null);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -157,6 +156,7 @@ const Chat = (
 
   useEffect(() => {    
     try {
+      const chatSocketId = makeid(32);
       setChatSocket(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
     } catch (error) {
       console.log(error);
