@@ -24,11 +24,28 @@ function makeid(length: number) {
 }
 
 
+function getCookie(name: any) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the  name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}    
+
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
 
-  const [chatSocket, setChatSocket] = useState<WebSocket | null>(null);
+  const chatSocketId = makeid(32);
+  const [chatSocket, setChatSocket] = useState<WebSocket>(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -58,21 +75,6 @@ const Chat = (
 
   const router = useRouter();
 
-  function getCookie(name: any) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the  name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-  }    
 
   useEffect(() => {
     axios({
@@ -155,14 +157,6 @@ const Chat = (
 
 
   useEffect(() => {    
-    try {
-      const chatSocketId = makeid(32);
-      setChatSocket(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
-    } catch (error) {
-      console.log(error);
-      window.location.reload();
-    }
-    
     chatSocket!.onopen = () => {
       console.log('Chat socket opened');
     };  
@@ -173,7 +167,7 @@ const Chat = (
 
     chatSocket!.onerror = () => {
       console.log('Chat socket error');
-      chatSocket!.close();
+      chatSocket.close();
       window.location.reload();
     };  
 
