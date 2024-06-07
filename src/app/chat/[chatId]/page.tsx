@@ -1,7 +1,7 @@
 'use client';
 import "../../globals.css";
 import { useState, useEffect} from "react";
-const axios = require('axios');
+import axios from 'axios';
 import { useRouter } from 'next/navigation'
 import {CSRFToken} from '@/components/csrftoken'
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
