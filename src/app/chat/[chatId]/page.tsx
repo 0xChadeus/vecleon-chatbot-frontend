@@ -9,6 +9,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import {MessageBox} from "@/components/messagebox";
 import { MessageProps } from "@/components/message";
 import { NavBar } from "@/components/navbar";
+import { Button } from "@/components/ui/button";
 import RingLoader from "react-spinners/RingLoader"
 
 function makeid(length: number) {
@@ -303,20 +304,18 @@ const Chat = (
       bottom-8 h:fit xl:w-1/2 w-full
       inline-block p-2 shadow-2xl opacity-75
       flex items-center bg-slate-700 rounded-xl justify-start">
-        <form id='send-msg' className="flex flex-grow" onSubmit={handleSubmit}> 
-          <TextareaAutosize 
-            rows={1}
-            wrap="physical"
-            placeholder="Send a message"
-            className="appearance-none bg-transparent
-            border-none w-full overflow-scroll flex-grow resize-none
-            text-white mr-3 py-2 px-3 leading-tight focus:outline-none h-fit"
-            value={userinput}
-            onChange={(e: any) => { setUserinput(e.target.value); } } 
-            onKeyDown={isLoading? undefined: onEnterPress}
-            maxRows={5}
-          />
-        </form> 
+        <TextareaAutosize 
+          rows={1}
+          wrap="physical"
+          placeholder="Send a message"
+          className="appearance-none bg-transparent
+          border-none w-full overflow-scroll flex-grow resize-none
+          text-white mr-3 py-2 px-3 leading-tight focus:outline-none h-fit"
+          value={userinput}
+          onChange={(e: any) => { setUserinput(e.target.value); } } 
+          onKeyDown={isLoading? undefined: onEnterPress}
+          maxRows={5}
+        />
         {isLoading ?
         <RingLoader
           color="white"
@@ -326,10 +325,9 @@ const Chat = (
           aria-label="Loading Spinner"
           data-testid="loader"
         /> :
-        <button form='send-msg' className="flex flex-wrap px-4 text-cyan-400 
-        text-2xl font-semibold hover:text-cyan-200" 
-          type="submit"> <BsFillArrowRightSquareFill/>
-        </button> 
+        <Button variant="ghost" className="flex flex-wrap px-4 text-cyan-400 
+        text-2xl font-semibold hover:text-cyan-200" onClick={handleSubmit}> <BsFillArrowRightSquareFill/>
+        </Button> 
         }
       </div>
     </>
