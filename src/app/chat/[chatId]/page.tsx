@@ -157,69 +157,6 @@ const Chat = (
   }, [character]);
 
 
-  useEffect(() => {    
-    chatSocket!.onopen = () => {
-      console.log('Chat socket opened');
-    };  
-
-    chatSocket!.onclose = () => {
-      console.log('Chat socket closed');
-    };  
-
-    chatSocket!.onerror = () => {
-      console.log('Chat socket error');
-      chatSocket.close();
-    };  
-
-    chatSocket!.onmessage = function(e) {
-      const data = JSON.parse(e.data);
-      setCurrmes(currMes => currMes + data.message);
-  
-      if(data.msg_complete === 'true') {
-        let rand_id = makeid(16);
-        setCurrMesId(rand_id);
-        const aiMes: MessageProps = {
-          role: 'ai',
-          content: currMes,
-          images: images,
-          audio: audio,
-          mes_id: rand_id,
-          chat_id: params.chatId,
-        }    
-        setChathistory(chatHistory => chatHistory.concat(aiMes));
-        const csrftoken = getCookie('csrftoken');
-        const aiMesSend = {
-          chat_id: params.chatId,
-          msg: currMes,
-          role: 'ai',
-          images: images,
-          audio: audio,
-          mes_id: rand_id,
-        }
-        axios({
-          withCredentials: true,
-          method: 'post',
-          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
-          data: aiMesSend,
-          headers: {"X-CSRFToken": csrftoken},
-        });
-        setCurrmes('');
-        setImages([]);
-        setIsLoading(false);
-        setContext(context => context.concat('\n' + character.name + ': ' + currMes));
-      }
-
-      if(data.is_image) {
-        setImages(images => [...images, data.image]);
-      }
-
-      if(data.is_audio) {
-        setAudio(data.audio);
-      }
-    }
-
-  }, [chatSocket, currMes]);
-
   
   const handleSubmit = async (e: any) => {
     // send user message 
@@ -287,6 +224,48 @@ const Chat = (
 
   return (
     <>
+      <CSRFToken/>
+      <NavBar/>
+      
+      <MessageBox
+        messages={chatHistory}
+        currentMes={currMes}
+        characterSrc={character.src}
+        userSrc={userSrc}
+        currentMesId={currMesId}
+        chatId={params.chatId}
+      />
+
+      <div className="fixed xl:left-1/4 sm:left-0 
+      bottom-8 xl:w-1/2 w-full
+      inline-block p-2 flex items-center 
+      bg-slate-700 rounded-xl justify-start">
+        <TextareaAutosize 
+          rows={1}
+          wrap="physical"
+          placeholder="Send a message"
+          className="appearance-none bg-transparent
+          border-none w-full overflow-scroll flex-grow resize-none
+          text-white mr-3 py-2 px-3 leading-tight focus:outline-none h-fit"
+          value={userinput}
+          onChange={(e: any) => { setUserinput(e.target.value); } } 
+          onKeyDown={isLoading? undefined: onEnterPress}
+          maxRows={5}
+        />
+        {isLoading ?
+        <RingLoader
+          color="white"
+          loading={isLoading}
+          cssOverride={{margin: 'auto'}}
+          size={25}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        /> :
+        <Button variant="ghost" className="flex flex-wrap px-4 text-cyan-400 
+        text-2xl font-semibold hover:text-cyan-200" onClick={handleSubmit}> <BsFillArrowRightSquareFill/>
+        </Button> 
+        }
+      </div>
     </>
   );
 }
