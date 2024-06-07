@@ -300,9 +300,9 @@ const Chat = (
       />
 
       <div className="fixed xl:left-1/4 sm:left-0 
-      bottom-8 h:fit xl:w-1/2 w-full
-      inline-block p-2 shadow-2xl opacity-75
-      flex items-center bg-slate-700 rounded-xl justify-start">
+      bottom-8 xl:w-1/2 w-full
+      inline-block p-2 flex items-center 
+      bg-slate-700 rounded-xl justify-start">
         <TextareaAutosize 
           rows={1}
           wrap="physical"
