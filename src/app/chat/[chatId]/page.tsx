@@ -287,48 +287,6 @@ const Chat = (
 
   return (
     <>
-      <CSRFToken/>
-      <NavBar/>
-      
-      <MessageBox
-        messages={chatHistory}
-        currentMes={currMes}
-        characterSrc={character.src}
-        userSrc={userSrc}
-        currentMesId={currMesId}
-        chatId={params.chatId}
-      />
-
-      <div className="fixed xl:left-1/4 sm:left-0 
-      bottom-8 xl:w-1/2 w-full
-      inline-block p-2 flex items-center 
-      bg-slate-700 rounded-xl justify-start">
-        <TextareaAutosize 
-          rows={1}
-          wrap="physical"
-          placeholder="Send a message"
-          className="appearance-none bg-transparent
-          border-none w-full overflow-scroll flex-grow resize-none
-          text-white mr-3 py-2 px-3 leading-tight focus:outline-none h-fit"
-          value={userinput}
-          onChange={(e: any) => { setUserinput(e.target.value); } } 
-          onKeyDown={isLoading? undefined: onEnterPress}
-          maxRows={5}
-        />
-        {isLoading ?
-        <RingLoader
-          color="white"
-          loading={isLoading}
-          cssOverride={{margin: 'auto'}}
-          size={25}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        /> :
-        <Button variant="ghost" className="flex flex-wrap px-4 text-cyan-400 
-        text-2xl font-semibold hover:text-cyan-200" onClick={handleSubmit}> <BsFillArrowRightSquareFill/>
-        </Button> 
-        }
-      </div>
     </>
   );
 }
