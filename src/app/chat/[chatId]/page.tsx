@@ -55,7 +55,13 @@ const Chat = (
   const [userinput, setUserinput] = useState<string>('');
   const [chatHistory, setChathistory] = useState<MessageProps[]>([]);
   const [context, setContext] = useState<string>('');
-  const [character, setCharacter] = useState({});  
+  const [character, setCharacter] = useState<any>({
+    src: '',
+    name: '',
+    description: '',
+    personality_summary: '',
+    scenario: '',
+  });  
 
   //prompts
   const [systemPrompt, setSystemPrompt] = useState('');
