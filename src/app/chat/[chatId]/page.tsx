@@ -45,6 +45,8 @@ const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
 
+  //const router = useRouter();
+
   const chatSocketId = makeid(32);
   const [chatSocket, setChatSocket] = useState<WebSocket>(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
 
@@ -74,8 +76,6 @@ const Chat = (
   const [userName, setUserName] = useState<string>('');
   const [userSrc, setUserSrc] = useState<string>('');
 
-  const router = useRouter();
-
 
   useEffect(() => {
     axios({
@@ -84,7 +84,7 @@ const Chat = (
       url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/authbackend/get_authstatus/`,
     }).then(function ( response: any) {
         if(response.data[0] === 'is_authenticated: false') {
-          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/register/`);
+          //router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/register/`);
         }
     });
     axios({
@@ -93,7 +93,7 @@ const Chat = (
       url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription_is_active/`,
     }).then(function ( response: any) {
         if(response.data.response === 'inactive') {
-          router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/subscriptions`);
+          //router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/subscriptions`);
         }
     });
 }, [])
