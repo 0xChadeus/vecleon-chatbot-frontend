@@ -169,7 +169,6 @@ const Chat = (
     chatSocket!.onerror = () => {
       console.log('Chat socket error');
       chatSocket.close();
-      window.location.reload();
     };  
 
     chatSocket!.onmessage = function(e) {
