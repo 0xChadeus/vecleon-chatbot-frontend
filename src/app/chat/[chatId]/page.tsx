@@ -137,21 +137,21 @@ const Chat = (
     .then((r) => r.text())
     .then(text  => {
       //const sysprompt = text.replaceAll('{{char}}', character.name);
-      setSystemPrompt(sysprompt.replaceAll('{{user}}', userName));
+      //setSystemPrompt(sysprompt.replaceAll('{{user}}', userName));
     })    
 
     fetch('/prefill.txt')
     .then((r) => r.text())
     .then(text  => {
       //const prefill_text = text.replaceAll('{{char}}', character.name);
-      setPrefill(prefill_text.replaceAll('{{user}}', userName));
+      //setPrefill(prefill_text.replaceAll('{{user}}', userName));
     })    
 
     fetch('/nsfw.txt') 
     .then((r) => r.text())
     .then(text  => {
       //const nsfw_text = text.replaceAll('{{char}}', character.name);
-      setNsfw(nsfw_text.replaceAll('{{user}}', userName));
+      //setNsfw(nsfw_text.replaceAll('{{user}}', userName));
     })
 
   }, []);//character]);
