@@ -55,24 +55,24 @@ const Chat = (
   const [userinput, setUserinput] = useState<string>('');
   const [chatHistory, setChathistory] = useState<MessageProps[]>([]);
   const [context, setContext] = useState<string>('');
-  //const [character, setCharacter] = useState({
-  //  src: '',
-  //  name: '',
-  //  description: '',
-  //  personality_summary: '',
-  //  scenario: '',
-  //});  
+  const [character, setCharacter] = useState({
+    src: '',
+    name: '',
+    description: '',
+    personality_summary: '',
+    scenario: '',
+  });  
 
   //prompts
-  const [systemPrompt, setSystemPrompt] = useState('');
-  const [prefill, setPrefill] = useState('');
-  const [nsfw, setNsfw] = useState('');
+  //const [systemPrompt, setSystemPrompt] = useState('');
+  //const [prefill, setPrefill] = useState('');
+  //const [nsfw, setNsfw] = useState('');
 
-  const [images, setImages] = useState<string[]>([]);
-  const [audio, setAudio] = useState<string>('');
+  //const [images, setImages] = useState<string[]>([]);
+  //const [audio, setAudio] = useState<string>('');
 
-  const [userName, setUserName] = useState<string>('');
-  const [userSrc, setUserSrc] = useState<string>('');
+  //const [userName, setUserName] = useState<string>('');
+  //const [userSrc, setUserSrc] = useState<string>('');
 
   const router = useRouter();
 
@@ -124,7 +124,7 @@ const Chat = (
             return mes;
           });
           setChathistory(msgHistory);
-          //setCharacter(response.data.character_key);
+          setCharacter(response.data.character_key);
           setUserName(response.data.user_name);
           setUserSrc(response.data.user_img);
       });  
@@ -133,28 +133,28 @@ const Chat = (
 
 
   useEffect(() => {
-    fetch('/system_prompt1.txt')
-    .then((r) => r.text())
-    .then(text  => {
-      //const sysprompt = text.replaceAll('{{char}}', character.name);
-      //setSystemPrompt(sysprompt.replaceAll('{{user}}', userName));
-    })    
+    //fetch('/system_prompt1.txt')
+    //.then((r) => r.text())
+    //.then(text  => {
+    //  const sysprompt = text.replaceAll('{{char}}', character.name);
+    //  setSystemPrompt(sysprompt.replaceAll('{{user}}', userName));
+    //})    
 
-    fetch('/prefill.txt')
-    .then((r) => r.text())
-    .then(text  => {
-      //const prefill_text = text.replaceAll('{{char}}', character.name);
-      //setPrefill(prefill_text.replaceAll('{{user}}', userName));
-    })    
+    //fetch('/prefill.txt')
+    //.then((r) => r.text())
+    //.then(text  => {
+    //  const prefill_text = text.replaceAll('{{char}}', character.name);
+    //  setPrefill(prefill_text.replaceAll('{{user}}', userName));
+    //})    
 
-    fetch('/nsfw.txt') 
-    .then((r) => r.text())
-    .then(text  => {
-      //const nsfw_text = text.replaceAll('{{char}}', character.name);
-      //setNsfw(nsfw_text.replaceAll('{{user}}', userName));
-    })
+    //fetch('/nsfw.txt') 
+    //.then((r) => r.text())
+    //.then(text  => {
+    //  const nsfw_text = text.replaceAll('{{char}}', character.name);
+    //  setNsfw(nsfw_text.replaceAll('{{user}}', userName));
+    //})
 
-  }, []);//character]);
+  }, [character]);
 
 
   useEffect(() => {    
@@ -178,43 +178,43 @@ const Chat = (
       if(data.msg_complete === 'true') {
         let rand_id = makeid(16);
         setCurrMesId(rand_id);
-        const aiMes: MessageProps = {
-          role: 'ai',
-          content: currMes,
-          images: images,
-          audio: audio,
-          mes_id: rand_id,
-          chat_id: params.chatId,
-        }    
+        //const aiMes: MessageProps = {
+        //  role: 'ai',
+        //  content: currMes,
+        //  images: images,
+        //  audio: audio,
+        //  mes_id: rand_id,
+        //  chat_id: params.chatId,
+        //}    
         setChathistory(chatHistory => chatHistory.concat(aiMes));
         const csrftoken = getCookie('csrftoken');
-        const aiMesSend = {
-          chat_id: params.chatId,
-          msg: currMes,
-          role: 'ai',
-          images: images,
-          audio: audio,
-          mes_id: rand_id,
-        }
+        //const aiMesSend = {
+        //  chat_id: params.chatId,
+        //  msg: currMes,
+        //  role: 'ai',
+        //  images: images,
+        //  audio: audio,
+        //  mes_id: rand_id,
+        //}
         axios({
           withCredentials: true,
           method: 'post',
           url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
-          data: aiMesSend,
+          //data: aiMesSend,
           headers: {"X-CSRFToken": csrftoken},
         });
         setCurrmes('');
-        setImages([]);
+        //setImages([]);
         setIsLoading(false);
-        //setContext(context => context.concat('\n' + character.name + ': ' + currMes));
+        setContext(context => context.concat('\n' + character.name + ': ' + currMes));
       }
 
       if(data.is_image) {
-        setImages(images => [...images, data.image]);
+        //setImages(images => [...images, data.image]);
       }
 
       if(data.is_audio) {
-        setAudio(data.audio);
+        //setAudio(data.audio);
       }
     }
 
@@ -257,23 +257,23 @@ const Chat = (
     //  'message': message
     //}));
 
-    const userMesSend = {
-      chat_id: params.chatId,  
-      msg: userinput,
-      role: 'user',
-      images: images,
-      audio: audio,
-      mes_id: rand_id,
-    }
+    //const userMesSend = {
+    //  chat_id: params.chatId,  
+    //  msg: userinput,
+    //  role: 'user',
+    //  images: images,
+    //  audio: audio,
+    //  mes_id: rand_id,
+    //}
 
     const csrftoken = getCookie('csrftoken');
-    axios({
-      withCredentials: true,
-      method: 'post',
-      url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
-      data: userMesSend,
-      headers: {"X-CSRFToken": csrftoken},
-    });
+    //axios({
+    //  withCredentials: true,
+    //  method: 'post',
+    //  url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
+    //  data: userMesSend,
+    //  headers: {"X-CSRFToken": csrftoken},
+    //});
 
     setUserinput('');    
   }
@@ -293,7 +293,7 @@ const Chat = (
       <MessageBox
         messages={chatHistory}
         currentMes={currMes}
-        characterSrc={''}//character.src}
+        characterSrc={character.src}
         userSrc={userSrc}
         currentMesId={currMesId}
         chatId={params.chatId}
