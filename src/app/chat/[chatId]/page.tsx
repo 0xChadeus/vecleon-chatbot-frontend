@@ -125,8 +125,8 @@ const Chat = (
           });
           setChathistory(msgHistory);
           setCharacter(response.data.character_key);
-          setUserName(response.data.user_name);
-          setUserSrc(response.data.user_img);
+          //setUserName(response.data.user_name);
+          //setUserSrc(response.data.user_img);
       });  
   }, []);
 
