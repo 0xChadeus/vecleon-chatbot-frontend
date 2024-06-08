@@ -235,7 +235,7 @@ const Chat = (
       chat_id: params.chatId,
     };
 
-    setContext(context => context.concat('\n' + userName + ': ' + userinput));
+    //setContext(context => context.concat('\n' + userName + ': ' + userinput));
 
     setChathistory(chatHistory => chatHistory.concat(userMes));
 
