@@ -186,7 +186,7 @@ const Chat = (
         //  mes_id: rand_id,
         //  chat_id: params.chatId,
         //}    
-        setChathistory(chatHistory => chatHistory.concat(aiMes));
+        //setChathistory(chatHistory => chatHistory.concat(aiMes));
         const csrftoken = getCookie('csrftoken');
         //const aiMesSend = {
         //  chat_id: params.chatId,
@@ -294,7 +294,7 @@ const Chat = (
         messages={chatHistory}
         currentMes={currMes}
         characterSrc={character.src}
-        userSrc={userSrc}
+        userSrc={''}//userSrc}
         currentMesId={currMesId}
         chatId={params.chatId}
       />
