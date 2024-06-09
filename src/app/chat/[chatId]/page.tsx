@@ -11,7 +11,6 @@ import { MessageProps } from "@/components/message";
 import { NavBar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import RingLoader from "react-spinners/RingLoader"
-import WebSocket from 'ws';
 
 function makeid(length: number) {
   let result = '';
@@ -46,8 +45,6 @@ const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
 
-  const chatSocketId = makeid(32);
-  const [chatSocket, setChatSocket] = useState<WebSocket>(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_URL}/chat/${chatSocketId}/`));
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -159,22 +156,24 @@ const Chat = (
 
 
   useEffect(() => {    
-    chatSocket.on('open', () => {
-        console.log('Chat socket opened');
-      } 
-    ); 
+    const chatSocketId = makeid(32);
+    const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
 
-    chatSocket.on('close', () => {
+    chatSocket!.onopen = () => {
+      console.log('Chat socket opened');
+    };  
+
+    chatSocket!.onclose = () => {
       console.log('Chat socket closed');
-    }); 
+    };  
 
-    chatSocket.on('error', () => {
+    chatSocket!.onerror = () => {
       console.log('Chat socket error');
       chatSocket.close();
-    });  
+    };  
 
     chatSocket!.onmessage = function(e) {
-      const data = JSON.parse(e.data.toString());
+      const data = JSON.parse(e.data);
       setCurrmes(currMes => currMes + data.message);
   
       if(data.msg_complete === 'true') {
