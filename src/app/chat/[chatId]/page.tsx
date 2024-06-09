@@ -219,7 +219,7 @@ const Chat = (
       }
     }
 
-  }, [chatSocket, currMes]);
+  }, [currMes]);
 
   
   const handleSubmit = async (e: any) => {
