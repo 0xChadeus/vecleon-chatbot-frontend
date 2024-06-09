@@ -41,12 +41,16 @@ function getCookie(name: any) {
     return cookieValue;
 }    
 
+function getChatSocket(chatSocketId: string) {
+  return new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_URL}/ws/chat/${chatSocketId}/`);
+}
+
+const chatSocketId = makeid(32);
+const chatSocket = getChatSocket(chatSocketId);
+
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
-
-  const chatSocketId = makeid(32);
-  const [chatSocket, setChatSocket] = useState<WebSocket>();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -78,7 +82,6 @@ const Chat = (
 
 
   useEffect(() => {
-    setChatSocket(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
     axios({
       withCredentials: true,
       method: 'get',
@@ -158,68 +161,69 @@ const Chat = (
   }, [character]);
 
 
-  //useEffect(() => {    
-  //  chatSocket!.onopen = () => {
-  //    console.log('Chat socket opened');
-  //  };  
+  useEffect(() => {    
 
-  //  chatSocket!.onclose = () => {
-  //    console.log('Chat socket closed');
-  //  };  
+    chatSocket!.onopen = () => {
+      console.log('Chat socket opened');
+    };  
 
-  //  chatSocket!.onerror = () => {
-  //    console.log('Chat socket error');
-  //    chatSocket!.close();
-  //  };  
+    chatSocket!.onclose = () => {
+      console.log('Chat socket closed');
+    };  
 
-  //  chatSocket!.onmessage = function(e) {
-  //    const data = JSON.parse(e.data);
-  //    setCurrmes(currMes => currMes + data.message);
-  //
-  //    if(data.msg_complete === 'true') {
-  //      let rand_id = makeid(16);
-  //      setCurrMesId(rand_id);
-  //      const aiMes: MessageProps = {
-  //        role: 'ai',
-  //        content: currMes,
-  //        images: images,
-  //        audio: audio,
-  //        mes_id: rand_id,
-  //        chat_id: params.chatId,
-  //      }    
-  //      setChathistory(chatHistory => chatHistory.concat(aiMes));
-  //      const csrftoken = getCookie('csrftoken');
-  //      const aiMesSend = {
-  //        chat_id: params.chatId,
-  //        msg: currMes,
-  //        role: 'ai',
-  //        images: images,
-  //        audio: audio,
-  //        mes_id: rand_id,
-  //      }
-  //      axios({
-  //        withCredentials: true,
-  //        method: 'post',
-  //        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
-  //        data: aiMesSend,
-  //        headers: {"X-CSRFToken": csrftoken},
-  //      });
-  //      setCurrmes('');
-  //      setImages([]);
-  //      setIsLoading(false);
-  //      setContext(context => context.concat('\n' + character.name + ': ' + currMes));
-  //    }
+    chatSocket!.onerror = () => {
+      console.log('Chat socket error');
+      chatSocket!.close();
+    };  
 
-  //    if(data.is_image) {
-  //      setImages(images => [...images, data.image]);
-  //    }
+    chatSocket!.onmessage = function(e) {
+      const data = JSON.parse(e.data);
+      setCurrmes(currMes => currMes + data.message);
+  
+      if(data.msg_complete === 'true') {
+        let rand_id = makeid(16);
+        setCurrMesId(rand_id);
+        const aiMes: MessageProps = {
+          role: 'ai',
+          content: currMes,
+          images: images,
+          audio: audio,
+          mes_id: rand_id,
+          chat_id: params.chatId,
+        }    
+        setChathistory(chatHistory => chatHistory.concat(aiMes));
+        const csrftoken = getCookie('csrftoken');
+        const aiMesSend = {
+          chat_id: params.chatId,
+          msg: currMes,
+          role: 'ai',
+          images: images,
+          audio: audio,
+          mes_id: rand_id,
+        }
+        axios({
+          withCredentials: true,
+          method: 'post',
+          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
+          data: aiMesSend,
+          headers: {"X-CSRFToken": csrftoken},
+        });
+        setCurrmes('');
+        setImages([]);
+        setIsLoading(false);
+        setContext(context => context.concat('\n' + character.name + ': ' + currMes));
+      }
 
-  //    if(data.is_audio) {
-  //      setAudio(data.audio);
-  //    }
-  //  }
+      if(data.is_image) {
+        setImages(images => [...images, data.image]);
+      }
 
-  //}, [currMes]);
+      if(data.is_audio) {
+        setAudio(data.audio);
+      }
+    }
+
+  }, [chatSocket, currMes]);
 
   
   const handleSubmit = async (e: any) => {
