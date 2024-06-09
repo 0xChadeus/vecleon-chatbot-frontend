@@ -46,7 +46,7 @@ const Chat = (
 ) => {
 
   const chatSocketId = makeid(32);
-  //const [chatSocket, setChatSocket] = useState<WebSocket>(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
+  const [chatSocket, setChatSocket] = useState<WebSocket>(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -218,7 +218,7 @@ const Chat = (
   //    }
   //  }
 
-  //}, []);//chatSocket, currMes]);
+  //}, [chatSocket, currMes]);
 
   
   const handleSubmit = async (e: any) => {
@@ -253,9 +253,9 @@ const Chat = (
                     nsfw,
                     params.chatId,];
 
-    //chatSocket!.send(JSON.stringify({
-    //  'message': message
-    //}));
+    chatSocket!.send(JSON.stringify({
+      'message': message
+    }));
 
     const userMesSend = {
       chat_id: params.chatId,  
