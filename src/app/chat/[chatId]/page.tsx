@@ -158,68 +158,68 @@ const Chat = (
   }, [character]);
 
 
-  useEffect(() => {    
-    chatSocket!.onopen = () => {
-      console.log('Chat socket opened');
-    };  
+  //useEffect(() => {    
+  //  chatSocket!.onopen = () => {
+  //    console.log('Chat socket opened');
+  //  };  
 
-    chatSocket!.onclose = () => {
-      console.log('Chat socket closed');
-    };  
+  //  chatSocket!.onclose = () => {
+  //    console.log('Chat socket closed');
+  //  };  
 
-    chatSocket!.onerror = () => {
-      console.log('Chat socket error');
-      chatSocket!.close();
-    };  
+  //  chatSocket!.onerror = () => {
+  //    console.log('Chat socket error');
+  //    chatSocket!.close();
+  //  };  
 
-    chatSocket!.onmessage = function(e) {
-      const data = JSON.parse(e.data);
-      setCurrmes(currMes => currMes + data.message);
-  
-      if(data.msg_complete === 'true') {
-        let rand_id = makeid(16);
-        setCurrMesId(rand_id);
-        const aiMes: MessageProps = {
-          role: 'ai',
-          content: currMes,
-          images: images,
-          audio: audio,
-          mes_id: rand_id,
-          chat_id: params.chatId,
-        }    
-        setChathistory(chatHistory => chatHistory.concat(aiMes));
-        const csrftoken = getCookie('csrftoken');
-        const aiMesSend = {
-          chat_id: params.chatId,
-          msg: currMes,
-          role: 'ai',
-          images: images,
-          audio: audio,
-          mes_id: rand_id,
-        }
-        axios({
-          withCredentials: true,
-          method: 'post',
-          url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
-          data: aiMesSend,
-          headers: {"X-CSRFToken": csrftoken},
-        });
-        setCurrmes('');
-        setImages([]);
-        setIsLoading(false);
-        setContext(context => context.concat('\n' + character.name + ': ' + currMes));
-      }
+  //  chatSocket!.onmessage = function(e) {
+  //    const data = JSON.parse(e.data);
+  //    setCurrmes(currMes => currMes + data.message);
+  //
+  //    if(data.msg_complete === 'true') {
+  //      let rand_id = makeid(16);
+  //      setCurrMesId(rand_id);
+  //      const aiMes: MessageProps = {
+  //        role: 'ai',
+  //        content: currMes,
+  //        images: images,
+  //        audio: audio,
+  //        mes_id: rand_id,
+  //        chat_id: params.chatId,
+  //      }    
+  //      setChathistory(chatHistory => chatHistory.concat(aiMes));
+  //      const csrftoken = getCookie('csrftoken');
+  //      const aiMesSend = {
+  //        chat_id: params.chatId,
+  //        msg: currMes,
+  //        role: 'ai',
+  //        images: images,
+  //        audio: audio,
+  //        mes_id: rand_id,
+  //      }
+  //      axios({
+  //        withCredentials: true,
+  //        method: 'post',
+  //        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/update_chat/`,
+  //        data: aiMesSend,
+  //        headers: {"X-CSRFToken": csrftoken},
+  //      });
+  //      setCurrmes('');
+  //      setImages([]);
+  //      setIsLoading(false);
+  //      setContext(context => context.concat('\n' + character.name + ': ' + currMes));
+  //    }
 
-      if(data.is_image) {
-        setImages(images => [...images, data.image]);
-      }
+  //    if(data.is_image) {
+  //      setImages(images => [...images, data.image]);
+  //    }
 
-      if(data.is_audio) {
-        setAudio(data.audio);
-      }
-    }
+  //    if(data.is_audio) {
+  //      setAudio(data.audio);
+  //    }
+  //  }
 
-  }, [currMes]);
+  //}, [currMes]);
 
   
   const handleSubmit = async (e: any) => {
