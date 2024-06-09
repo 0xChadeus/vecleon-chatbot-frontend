@@ -45,6 +45,8 @@ const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
 
+  const chatSocketId = makeid(32);
+  const [chatSocket, setChatSocket] = useState<WebSocket>();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -76,6 +78,7 @@ const Chat = (
 
 
   useEffect(() => {
+    setChatSocket(new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`));
     axios({
       withCredentials: true,
       method: 'get',
@@ -156,9 +159,6 @@ const Chat = (
 
 
   useEffect(() => {    
-    const chatSocketId = makeid(32);
-    const chatSocket = new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_WEBSOCKET_URL}/chat/${chatSocketId}`);
-
     chatSocket!.onopen = () => {
       console.log('Chat socket opened');
     };  
@@ -169,7 +169,7 @@ const Chat = (
 
     chatSocket!.onerror = () => {
       console.log('Chat socket error');
-      chatSocket.close();
+      chatSocket!.close();
     };  
 
     chatSocket!.onmessage = function(e) {
@@ -219,7 +219,7 @@ const Chat = (
       }
     }
 
-  }, [currMes]);
+  }, [chatSocket, currMes]);
 
   
   const handleSubmit = async (e: any) => {
