@@ -43,7 +43,7 @@ function getCookie(name: any) {
 
 function getChatSocket(chatSocketId: string) {
   console.log('Chat socket id: ' + chatSocketId);
-  return new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_URL}/chat/${chatSocketId}/`);
+  return new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_URL}/ws/chat/${chatSocketId}/`);
 }
 
 const chatSocketId = makeid(32);
