@@ -46,14 +46,16 @@ function getChatSocket(chatSocketId: string) {
   return new WebSocket(`${process.env.NEXT_PUBLIC_MIDSERVER_URL}/ws/chat/${chatSocketId}/`);
 }
 
-const chatSocketId = makeid(32);
-const chatSocket = getChatSocket(chatSocketId);
+//const chatSocketId = makeid(32);
+//const chatSocket = getChatSocket(chatSocketId);
 
 const Chat = (
   { params }: { params: { chatId: string }},
 ) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [chatSocket, setChatSocket] = useState<WebSocket>(getChatSocket(params.chatId));
 
   const [currMes, setCurrmes] = useState<string>('');
   const [currMesId, setCurrMesId] = useState<string>('');
