@@ -20,6 +20,7 @@ export default function Home() {
   const titleScroll = useTransform(scrollYProgress, [0, 1], [0, 700]);
   const bgScroll = useTransform(scrollYProgress, [0, 1], [-100, -200]);
   const infoScroll = useTransform(scrollYProgress, [0, 1], [0, -400]);
+  const chatExampleScroll = useTransform(scrollYProgress, [0, 1], [0, -400]);
   const rd = Math.floor(Math.random() * -75) - 25;
 
   return (
@@ -28,6 +29,10 @@ export default function Home() {
       <motion.h1 style={{y:titleScroll}}  className="flex absolute top-1/4 md:left-1/2 sm:left-10 left-10 md:text-7xl sm:text-6xl text-5xl font-mono font-extrabold drop-shadow-[0_3px_3px_rgba(0,0,0,0.99)]" >TALK TO ANY CHARACTER YOU WANT, IN ANY WORLD YOU WANT.</motion.h1>  
       <motion.div className="flex relative shrink-0 bg-img" style={{y:bgScroll}}>
         <Image src={'/background5.jpg'} alt={''} fill={true} style={{objectFit:"cover"}}
+/>
+      </motion.div>
+      <motion.div className="flex relative shrink-0 bg-img opacity-60" style={{y:chatExampleScroll}}>
+        <Image src={'/chat_example.png'} alt={''} fill={true} style={{objectFit:"scale-down"}}
 />
       </motion.div>
 

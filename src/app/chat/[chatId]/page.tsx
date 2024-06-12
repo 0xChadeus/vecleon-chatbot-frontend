@@ -101,7 +101,7 @@ const Chat = (
           router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/subscriptions`);
         }
     });
-}, [])
+  }, [])
   
 
 
