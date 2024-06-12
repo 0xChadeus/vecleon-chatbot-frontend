@@ -8,7 +8,7 @@ import React from 'react';
 export const LandingNavbar = () => {
     return(
         <div className="fixed w-full items-center bg-black 
-        h-14 z-50 font-sans">
+        h-14 z-50 font-sans border-b border-slate-700">
             <div className="absolute flex left-14">
                 <span className="svgIcon t-popup-svg">
                     <a href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/`} className='absolute flex'>
