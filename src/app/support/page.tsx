@@ -72,7 +72,6 @@ const SupportPage = ({}) => {
         <div className="flex h-5 items-center space-x-4 text-sm">
           <div> support@vecleon.com </div>
           <Separator orientation="vertical" />
-          <Button onClick={handleSubmit}>Reveal Email Address</Button>
         </div>
       </div>
     </>

@@ -103,7 +103,7 @@ const standardPack = [
   },
   {
     feature: "Companion Creation",
-    canAccess: "Limit of 20",
+    canAccess: "Limit of 100 concurrent characters",
   },
   {
     feature: "Token Generation",
