@@ -20,7 +20,7 @@ export default function Home() {
   const titleScroll = useTransform(scrollYProgress, [0, 1], [0, 700]);
   const bgScroll = useTransform(scrollYProgress, [0, 1], [-100, -200]);
   const infoScroll = useTransform(scrollYProgress, [0, 1], [0, -400]);
-  const chatExampleScroll = useTransform(scrollYProgress, [0, 1], [0, -400]);
+  const chatExampleScroll = useTransform(scrollYProgress, [0, 1], [0, -550]);
   const rd = Math.floor(Math.random() * -75) - 25;
 
   return (
