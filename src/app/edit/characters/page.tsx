@@ -70,7 +70,7 @@ const CharacterListPage = ({}) => {
             </Button>
           </a>
           </div>
-          <div className="flex absolute top-20 right-0 w-full">
+          <div className="absolute top-20 right-0 w-full">
             {characters.map((character) => (
               <ListItem
                 key={character.id}
