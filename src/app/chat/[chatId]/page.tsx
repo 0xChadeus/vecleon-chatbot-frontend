@@ -316,7 +316,8 @@ const Chat = (
           rows={1}
           wrap="physical"
           placeholder="Send a message"
-          className="appearance-none bg-transparent scrollbar scrollbar-track-slate-700
+          className="appearance-none bg-transparent scrollbar 
+          scrollbar-track-slate-700 scrollbar-thumb-slate-800
           border-none w-full overflow-y-scroll flex-grow resize-none
           text-white mr-3 py-2 px-3 leading-tight focus:outline-none h-fit"
           value={userinput}

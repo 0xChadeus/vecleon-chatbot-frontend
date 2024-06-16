@@ -18,8 +18,7 @@ export const SideBar = () => {
             </SheetTrigger>
             <SheetContent side="left" className='p-0 w-96 pt-10'>
             <div className="flex w-96 flex-col duration-500 ease-out transition-all
-            justify-left fixed ab inset-y-0 inset-x-0 bg-black overflow-scroll
-            bottom-14"> 
+            justify-left fixed ab inset-y-0 inset-x-0 bg-black bottom-14"> 
                 <div className="flex flex-col group
                 h-full w-full text-white ">
                     <div className="fixed p-3 flex-1 justify-center z-50 bg-black w-full">

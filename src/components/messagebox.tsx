@@ -33,7 +33,7 @@ export const MessageBox = ({
         sm:left-0 xl:w-1/2 sm:w-full top-20 bottom-32 
         border rounded-xl border-cyan-500 bg-slate-950">
           <div className="overflow-y-scroll scrollbar-thin scrollbar-thumb-slate-800 
-        scrollbar-track-slate-950 scrollbar-track-rounded-full">
+        scrollbar-track-slate-950">
             {messages.map((message) => (
                 <Message
                     key={message.mes_id}

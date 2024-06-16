@@ -19,7 +19,9 @@ export const ChatList = ({
 
     return(
         <div className="flex flex-col p-6 absolute 
-                        top-10 overflow-scroll">
+                        top-10 overflow-y-scroll w-full 
+                        scrollbar-thin scrollbar-thumb-slate-800 
+                        scrollbar-track-slate-950">
             {chats.map((chat: any) => (
                 <ChatListItem
                     key={chat.id}

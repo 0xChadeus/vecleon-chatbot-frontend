@@ -61,7 +61,8 @@ const CharacterListPage = ({}) => {
         <NavBar/>
         <div className="flex flex-col fixed xl:left-1/4 \
         sm:left-0 xl:w-1/2 w-full top-20 bottom-10  
-        border rounded-md border-slate-700 overflow-scroll bg-slate-950">
+        border rounded-md border-slate-700 overflow-y-scroll scrollbar-thin scrollbar-thumb-slate-800 
+        scrollbar-track-slate-950 bg-slate-950">
           <div className="flex absolute sm:w-1/2 h-20 bg-slate-950 z-50 rounded-sm border-slate-700">
           <a href="https://vecleon.com/edit/characters/new">
             <Button className="absolute left-6 top-6 rounded-xl">
