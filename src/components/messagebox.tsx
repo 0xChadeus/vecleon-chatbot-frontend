@@ -30,8 +30,9 @@ export const MessageBox = ({
 
     return(
         <div className="flex flex-col py-6 fixed xl:left-1/4
-        sm:left-0 xl:w-1/2 sm:w-full top-20 bottom-32  
-        border rounded-xl border-cyan-500 overflow-scroll bg-slate-950">
+        sm:left-0 xl:w-1/2 sm:w-full top-20 bottom-32 scrollbar-thin scrollbar-thumb-slate-900 
+        scrollbar-track-slate-950 scrollbar-track-rounded-full
+        border rounded-xl border-cyan-500 overflow-y-scroll bg-slate-950">
             {messages.map((message) => (
                 <Message
                     key={message.mes_id}
