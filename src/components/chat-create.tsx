@@ -75,6 +75,7 @@ export const ChatCreate = ({
     const {toast} = useToast();
     const [characterList, setCharacterlist] = useState<ListItemProps[]>([]);
     const [userEmail, setUserEmail] = useState('');
+    const [errorText, setErrorText] = useState('');
 
     function getCookie(name: any) {
       let cookieValue = null;
@@ -123,6 +124,19 @@ export const ChatCreate = ({
     const maxFileSize = Number(process.env.NEXT_PUBLIC_IMAGE_FILE_LIMIT);
 
     const chatSubmit = async (e: any) => {
+      if (chatForm.getValues().name === "") {
+          setErrorText('Chat name is required.');
+          return;
+      } else if (chatForm.getValues().user_name === "") {
+          setErrorText('User image is required.');
+          return;
+      } else if (chatForm.getValues().user_img === "") {
+          setErrorText('User profile image is required.');
+          return;
+      } else if (chatForm.getValues().character_id === "") {
+          setErrorText('Please choose which character you would like to talk to. If you do not have any characters, please create one.');
+          return;
+      }
       const csrftoken = getCookie('csrftoken');
         const imgSrc = chatForm.getValues().user_img;
         console.log("src here: " + imgSrc);
@@ -305,12 +319,16 @@ export const ChatCreate = ({
               />
             </div>
           </div>
+          <div className="text-red-500 text-center">
+            {errorText}
+          </div>
           <AlertDialogFooter>
-          <AlertDialogCancel>
-            Cancel</AlertDialogCancel>
-            <AlertDialogAction type="submit"
-              onClick={chatSubmit}
-            >Create Chat</AlertDialogAction>
+            <AlertDialogCancel>
+              Cancel</AlertDialogCancel>
+            <Button type="submit"
+                onClick={chatSubmit}>
+            Create Chat
+            </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </Form>
