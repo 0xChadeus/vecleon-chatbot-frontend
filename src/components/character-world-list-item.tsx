@@ -40,7 +40,7 @@ export const ListItem = ({
       "flex max-w-s w-full gap-x-3 text-s inline-blockshadow-2xl \
       text-slate-900 py-2 border \
       rounded-xl border-white border-4 my-1\
-      overflow-hidden h-40",
+      overflow-hidden h-40 w-full",
       role === "character" && "bg-black",
       role === "world" && "bg-cyan-950"
     )}> 
