@@ -1,9 +1,6 @@
 'use client';
-import classNames from 'classnames';
-import { useRouter } from 'next/navigation'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 import { ImBook } from "react-icons/im";
-import { Menu } from 'lucide-react';
 import { ChatList } from './chatlist';
 import { ChatCreate } from './chat-create';
 
@@ -17,8 +14,7 @@ export const SideBar = () => {
                 size={40}/>
             </SheetTrigger>
             <SheetContent side="left" className='p-0 w-96 pt-10'>
-            <div className="flex w-96 flex-col duration-500 ease-out transition-all
-            justify-left fixed ab inset-y-0 inset-x-0 bg-black bottom-14"> 
+            <div className="flex w-96 flex-col duration-500 ease-out transition-all overflow-y-scroll scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-slate-950 justify-left fixed ab inset-y-0 inset-x-0 bg-black bottom-14"> 
                 <div className="flex flex-col group
                 h-full w-full text-white ">
                     <div className="fixed p-3 flex-1 justify-center z-50 bg-black w-full">
