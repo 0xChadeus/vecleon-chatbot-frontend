@@ -1,5 +1,5 @@
 "use client";
-const axios = require('axios');
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { NavBar } from "@/components/navbar";
 import { ListItem, ListItemProps } from "@/components/character-world-list-item";
@@ -22,11 +22,8 @@ const CharacterListPage = ({}) => {
           if(response.data[0] === 'is_authenticated: false') {
             router.push("https://vecleon.com/auth/login");
           } else {
-            window.location.reload();
           }
       });  
-
-  
     }, []);
 
     useEffect(() => {
@@ -35,7 +32,6 @@ const CharacterListPage = ({}) => {
         method: 'get',
         url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_subscription_is_active/`,
       }).then(function ( response: any) {
-          console.log(response);
           if(response.data.response === 'inactive') {
             router.push("https://vecleon.com/subscriptions");
           }
