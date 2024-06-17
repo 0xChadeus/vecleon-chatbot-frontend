@@ -186,6 +186,7 @@ export const CharacterForm = ({
             })
         }
         router.push("../../edit/characters");
+        window.location.reload();
     };
    
     return (
