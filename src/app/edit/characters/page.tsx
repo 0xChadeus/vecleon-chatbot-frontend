@@ -22,24 +22,13 @@ const CharacterListPage = ({}) => {
           if(response.data[0] === 'is_authenticated: false') {
             router.push("https://vecleon.com/auth/login");
           } else {
-            console.log(response.data);
+            window.location.reload();
           }
       });  
 
   
     }, []);
 
-    useEffect(() => {
-      axios({
-        withCredentials: true,
-        method: 'get',
-        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_characters/`,
-      }).then(function ( response: any) {
-          setCharacters(response.data)
-        }
-      );
-    }, [])
-  
     useEffect(() => {
       axios({
         withCredentials: true,
@@ -52,6 +41,18 @@ const CharacterListPage = ({}) => {
           }
       });
     }, [])
+
+    useEffect(() => {
+      axios({
+        withCredentials: true,
+        method: 'get',
+        url: `${process.env.NEXT_PUBLIC_MIDSERVER_URL}/api/get_characters/`,
+      }).then(function ( response: any) {
+          setCharacters(response.data)
+        }
+      );
+    }, [])
+  
 
     return (
       <>

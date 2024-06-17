@@ -185,7 +185,6 @@ export const CharacterForm = ({
                 description: "Could not submit"
             })
         }
-        window.location.reload();
         router.push("../../edit/characters");
     };
    
